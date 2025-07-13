@@ -36,6 +36,8 @@ const MarketplacePage: NextPage = () => {
   const [clubs, setClubs] = useState<Club[]>([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState<"all" | "mine">("all");
+  const [error, setError] = useState<string | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
 
   // Get total supply of NFTs
   const { data: totalSupply } = useScaffoldReadContract({
@@ -58,25 +60,29 @@ const MarketplacePage: NextPage = () => {
         setClubs(data.clubs);
       } catch (error) {
         console.error(`❌ Error loading clubs:`, error);
+        setError("Failed to load clubs data");
       }
     };
 
     loadClubs();
   }, []);
 
-  // Load all NFTs
+  // Load all NFTs with improved error handling and retry mechanism
   useEffect(() => {
     const loadAllNFTs = async () => {
-      console.log(`🔄 loadAllNFTs called with totalSupply: ${totalSupply}, clubs loaded: ${clubs.length}`);
+      console.log(
+        `🔄 loadAllNFTs called with totalSupply: ${totalSupply}, clubs loaded: ${clubs.length}, retry: ${retryCount}`,
+      );
 
-      if (!totalSupply) {
-        console.log(`⚠️ No totalSupply, setting empty NFTs array`);
+      if (!totalSupply || totalSupply === 0n) {
+        console.log(`⚠️ No totalSupply or totalSupply is 0, setting empty NFTs array`);
         setAllNFTs([]);
         setLoading(false);
         return;
       }
 
       setLoading(true);
+      setError(null);
       const nfts: NFT[] = [];
 
       try {
@@ -87,27 +93,25 @@ const MarketplacePage: NextPage = () => {
         const experiences = experiencesData.experiences;
         console.log(`📚 Loaded ${experiences.length} experiences`);
 
-        // Get all NFTs (simplified approach)
-        for (let tokenId = 1; tokenId <= Number(totalSupply); tokenId++) {
-          try {
-            console.log(`🔍 Processing NFT #${tokenId}...`);
+        // Get all NFTs using the new efficient API
+        console.log(`🎯 Total supply: ${Number(totalSupply)}, will load all NFTs at once`);
 
-            // Get owner of this token on-chain using a direct contract call
-            const response = await fetch("/api/contract/ownerOf", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ tokenId }),
-            });
+        const response = await fetch("/api/contract/getAllNFTs", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-            if (response.ok) {
-              const { owner } = await response.json();
-              console.log(`👤 NFT #${tokenId} owner: ${owner}`);
+        if (response.ok) {
+          const { nfts: contractNFTs } = await response.json();
+          console.log(`📊 Received ${contractNFTs.length} NFTs from contract`);
 
-              // Get experience ID for this token (experienceId = tokenId for simplicity)
-              const experienceId = tokenId;
-              console.log(`🎯 Experience ID for NFT #${tokenId}: ${experienceId}`);
+          // Process each NFT from the contract
+          for (const contractNFT of contractNFTs) {
+            try {
+              const { tokenId, experienceId, owner } = contractNFT;
+              console.log(`🔍 Processing NFT #${tokenId} with experienceId ${experienceId} owned by ${owner}`);
 
               // Find the experience and its club
               const experience = experiences.find((exp: any) => exp.id === experienceId);
@@ -142,22 +146,41 @@ const MarketplacePage: NextPage = () => {
                 clubId: clubId,
                 club: club,
               });
+
+              console.log(`✅ Successfully processed NFT #${tokenId}`);
+            } catch (error) {
+              console.error(`❌ Error processing NFT ${contractNFT.tokenId}:`, error);
+              // Continue with other NFTs even if one fails
             }
-          } catch (error) {
-            console.error(`❌ Error loading NFT ${tokenId}:`, error);
           }
+        } else {
+          const errorData = await response.json();
+          console.error(`❌ API error getting all NFTs:`, errorData);
+          setError("Failed to load NFTs from contract. Please try refreshing the page.");
         }
       } catch (error) {
         console.error(`❌ Error loading all NFTs:`, error);
+        setError("Failed to load NFTs. Please check your connection and try again.");
       }
 
-      console.log(`✅ Loaded ${nfts.length} NFTs total`);
+      console.log(`✅ Loaded ${nfts.length} NFTs total out of ${Number(totalSupply)} expected`);
+
+      if (nfts.length === 0 && Number(totalSupply) > 0) {
+        setError("No NFTs found despite total supply indicating they should exist. Please try refreshing.");
+      }
+
       setAllNFTs(nfts);
       setLoading(false);
     };
 
     loadAllNFTs();
-  }, [totalSupply, clubs]);
+  }, [totalSupply, clubs, retryCount]);
+
+  // Retry function
+  const handleRetry = () => {
+    setRetryCount(prev => prev + 1);
+    setError(null);
+  };
 
   // Generate NFT image with club logo
   const generateNFTImage = (experienceId: number, club?: Club) => {
@@ -318,6 +341,32 @@ const MarketplacePage: NextPage = () => {
         <h1 className="text-4xl font-bold mb-4">NFT Marketplace</h1>
         <p className="text-lg text-base-content/70 mb-6">Discover all FanAI Passport NFTs from the community</p>
 
+        {/* Error Display */}
+        {error && (
+          <div className="alert alert-error mb-6 max-w-2xl mx-auto">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current shrink-0 h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <div>
+              <h3 className="font-bold">Error Loading NFTs</h3>
+              <div className="text-xs">{error}</div>
+            </div>
+            <button onClick={handleRetry} className="btn btn-sm btn-outline">
+              🔄 Retry
+            </button>
+          </div>
+        )}
+
         <div className="flex justify-center gap-4 mb-6">
           <button
             onClick={() => setFilter("all")}
@@ -333,6 +382,12 @@ const MarketplacePage: NextPage = () => {
               My NFTs ({allNFTs.filter(nft => nft.owner?.toLowerCase() === connectedAddress?.toLowerCase()).length})
             </button>
           )}
+        </div>
+
+        {/* Debug Info */}
+        <div className="text-sm text-base-content/60 mb-4">
+          Total Supply: {totalSupply?.toString() || "Loading..."} | Loaded NFTs: {allNFTs.length} | Retry Count:{" "}
+          {retryCount}
         </div>
 
         {/* Regeneration Controls */}

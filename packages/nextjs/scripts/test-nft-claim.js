@@ -80,7 +80,7 @@ const testNFTClaim = () => {
   
   console.log(`\n💡 Troubleshooting:`);
   console.log(`  - Make sure you're connected to local network in MetaMask`);
-  console.log(`  - Ensure you have minted a Fan-AI Passport NFT`);
+  console.log(`  - Ensure you have minted a FAN Passport NFT`);
   console.log(`  - Check that the experience is fully completed`);
   console.log(`  - Verify the smart contract is deployed and accessible`);
 };

@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { ExperienceQuiz } from "~~/components/ExperienceQuiz";
+import { ExperienceResults } from "~~/components/ExperienceResults";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { useClub } from "~~/hooks/useClub";
+import { hybridExperienceService } from "~~/services/hybridExperienceService";
 
 interface Task {
   id: number;
@@ -34,10 +37,13 @@ type PageProps = {
 
 const ExperiencePageClient = ({ club, id }: { club: string; id: string }) => {
   const { address: connectedAddress } = useAccount();
+  const searchParams = useSearchParams();
   const [experience, setExperience] = useState<Experience | null>(null);
   const [loading, setLoading] = useState(true);
   const [claiming, setClaiming] = useState(false);
   const [showClaimButton, setShowClaimButton] = useState(false);
+  const [showResults, setShowResults] = useState(false);
+  const [userProgress, setUserProgress] = useState<any>(null);
   const { clubs, loading: clubsLoading } = useClub();
 
   // Find the current club based on the URL parameter
@@ -48,7 +54,7 @@ const ExperiencePageClient = ({ club, id }: { club: string; id: string }) => {
     contractName: "ExperienceNFT",
   });
 
-  // Load experience data
+  // Load experience data and user progress
   useEffect(() => {
     const loadExperience = async () => {
       setLoading(true);
@@ -64,6 +70,18 @@ const ExperiencePageClient = ({ club, id }: { club: string; id: string }) => {
 
         if (foundExperience) {
           setExperience(foundExperience);
+
+          // Load user progress if connected
+          if (connectedAddress) {
+            const progress = await hybridExperienceService.getUserProgress(connectedAddress, foundExperience.id);
+            setUserProgress(progress);
+
+            // Check if we should show results view
+            const viewParam = searchParams.get("view");
+            if (viewParam === "results" && progress?.experienceCompleted) {
+              setShowResults(true);
+            }
+          }
         } else {
           setExperience(null);
         }
@@ -76,11 +94,21 @@ const ExperiencePageClient = ({ club, id }: { club: string; id: string }) => {
     };
 
     loadExperience();
-  }, [club, id]);
+  }, [club, id, connectedAddress, searchParams]);
 
   // Handle experience completion
   const handleExperienceCompleted = () => {
     setShowClaimButton(true);
+  };
+
+  // Handle show results
+  const handleShowResults = () => {
+    setShowResults(true);
+  };
+
+  // Handle back to experience
+  const handleBackToExperience = () => {
+    setShowResults(false);
   };
 
   // Handle claim NFT
@@ -163,7 +191,16 @@ const ExperiencePageClient = ({ club, id }: { club: string; id: string }) => {
       </div>
 
       <div className="max-w-4xl mx-auto">
-        {showClaimButton ? (
+        {showResults ? (
+          <ExperienceResults
+            experience={experience}
+            userProgress={userProgress}
+            onBackToExperience={handleBackToExperience}
+            onClaimNFT={handleClaimNFT}
+            claiming={claiming}
+            connectedAddress={connectedAddress}
+          />
+        ) : showClaimButton ? (
           <div className="bg-base-100 rounded-lg p-8 shadow-lg">
             <div className="text-center mb-8">
               <div className="text-6xl mb-4">🎉</div>
@@ -174,11 +211,14 @@ const ExperiencePageClient = ({ club, id }: { club: string; id: string }) => {
             </div>
 
             <div className="space-y-6">
-              <div className="text-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onClick={handleShowResults} className="btn btn-outline btn-lg">
+                  📊 View Results
+                </button>
                 <button
                   onClick={handleClaimNFT}
                   disabled={claiming || !connectedAddress}
-                  className="btn btn-primary btn-lg w-full"
+                  className="btn btn-primary btn-lg"
                 >
                   {claiming ? (
                     <>

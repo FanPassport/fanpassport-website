@@ -1,4 +1,4 @@
-# 🔍 Guide de Vérification du NFT Fan-AI Passport
+# 🔍 Guide de Vérification du NFT FAN Passport
 
 ## 📱 Vérification dans MetaMask
 

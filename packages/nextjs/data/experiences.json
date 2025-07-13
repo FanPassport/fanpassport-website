@@ -148,6 +148,97 @@
     },
     {
       "id": 3,
+      "clubId": "psg",
+      "name": "PSG FIFA World Cup Club Semi-Final",
+      "isActive": true,
+      "rewardAmount": 300,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Betting - Winner",
+          "description": "Qui va gagner le match PSG vs Real Madrid en demi-finale ? (PSG, Real Madrid, Match nul)",
+          "taskType": "QUIZ",
+          "data": "Qui va gagner le match PSG vs Real Madrid en demi-finale ? (PSG, Real Madrid, Match nul)",
+          "answer": "PSG",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "Betting - Score Final",
+          "description": "Quel sera le score final du match PSG vs Real Madrid ? (ex: 2-1, 3-2, 1-0, 2-2)",
+          "taskType": "QUIZ",
+          "data": "Quel sera le score final du match PSG vs Real Madrid ? (ex: 2-1, 3-2, 1-0, 2-2)",
+          "answer": "3-2",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "QR Code Tribune Auteuil",
+          "description": "Scanne le QR code dans la Tribune Auteuil pour la demi-finale",
+          "taskType": "QR_CODE",
+          "data": "qr_tribune_auteuil_semifinal",
+          "answer": "psg_real_semifinal_2024",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Betting - Meilleur Buteur",
+          "description": "Qui sera le meilleur buteur du match ? (Kylian Mbappé, Randal Kolo Muani, Bradley Barcola, Vinicius Jr, Jude Bellingham)",
+          "taskType": "QUIZ",
+          "data": "Qui sera le meilleur buteur du match ? (Kylian Mbappé, Randal Kolo Muani, Bradley Barcola, Vinicius Jr, Jude Bellingham)",
+          "answer": "Kylian Mbappé",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Check-in Zone VIP",
+          "description": "Fais un check-in dans la zone VIP pour la demi-finale",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vip_semifinal",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 5,
+          "name": "Betting - Temps Premier But",
+          "description": "À quelle minute sera marqué le premier but ? (1-15, 16-30, 31-45, 46-60, 61-75, 76-90, Pas de but)",
+          "taskType": "QUIZ",
+          "data": "À quelle minute sera marqué le premier but ? (1-15, 16-30, 31-45, 46-60, 61-75, 76-90, Pas de but)",
+          "answer": "16-30",
+          "isCompleted": false
+        },
+        {
+          "id": 6,
+          "name": "QR Code Vestiaire",
+          "description": "Scanne le QR code dans les vestiaires des joueurs",
+          "taskType": "QR_CODE",
+          "data": "qr_vestiaire_psg_semifinal",
+          "answer": "psg_semifinal_champions",
+          "isCompleted": false
+        },
+        {
+          "id": 7,
+          "name": "Betting - Homme du Match",
+          "description": "Qui sera l'homme du match ? (Kylian Mbappé, Gianluigi Donnarumma, Vitinha, Vinicius Jr, Jude Bellingham)",
+          "taskType": "QUIZ",
+          "data": "Qui sera l'homme du match ? (Kylian Mbappé, Gianluigi Donnarumma, Vitinha, Vinicius Jr, Jude Bellingham)",
+          "answer": "Kylian Mbappé",
+          "isCompleted": false
+        },
+        {
+          "id": 8,
+          "name": "Betting - Nombre de Cartons",
+          "description": "Combien de cartons jaunes seront distribués pendant le match ? (0-2, 3-4, 5-6, 7+)",
+          "taskType": "QUIZ",
+          "data": "Combien de cartons jaunes seront distribués pendant le match ? (0-2, 3-4, 5-6, 7+)",
+          "answer": "3-4",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 4,
       "clubId": "real-madrid",
       "name": "Real Madrid Bernabéu Experience",
       "isActive": true,

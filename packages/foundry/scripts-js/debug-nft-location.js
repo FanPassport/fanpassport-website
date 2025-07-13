@@ -106,7 +106,7 @@ async function debugNFTLocation() {
 
   console.log("\n📋 Résumé:");
   console.log("   - L'NFT de récompense devrait être dans le TBA, pas dans l'adresse principale");
-  console.log("   - Le TBA est l'adresse qui peut recevoir des NFTs pour votre Fan-AI Passport");
+  console.log("   - Le TBA est l'adresse qui peut recevoir des NFTs pour votre FAN Passport");
   console.log("   - Vérifiez le TBA dans le block explorer pour voir l'NFT de récompense");
 }
 

@@ -37,7 +37,7 @@ export const wagmiConnectors = connectorsForWallets(
   ],
 
   {
-    appName: "FAN-AI Passport",
+    appName: "FAN Passport",
     projectId: scaffoldConfig.walletConnectProjectId,
   },
 );
