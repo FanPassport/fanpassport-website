@@ -122,7 +122,7 @@ export const Header = () => {
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">FAN-AI Passport</span>
+            <span className="font-bold leading-tight">FAN Passport</span>
             <span className="text-xs">Fan exclusive experiences for you</span>
           </div>
         </Link>

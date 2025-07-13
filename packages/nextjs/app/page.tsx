@@ -25,12 +25,16 @@ const Home: NextPage = () => {
           ) : (
             <>
               <h1 className="text-center">
-                <span className="block text-4xl font-bold">Choose your club</span>
+                <span className="block text-4xl font-bold">
+                  {!isConnected ? "Connect your wallet" : "Choose your club"}
+                </span>
               </h1>
 
               <div className="text-center mt-6">
                 <p className="text-lg mb-8">
-                  Select your favorite club to access exclusive experiences and mint your Fan-AI Passport NFT.
+                  {!isConnected
+                    ? "Connect your wallet to start your FAN Passport journey and access exclusive club experiences."
+                    : "Select your favorite club to access exclusive experiences and mint your FAN Passport NFT."}
                 </p>
 
                 {!isConnected && (
@@ -38,7 +42,7 @@ const Home: NextPage = () => {
                     <div className="flex justify-center items-center space-x-2 flex-col mb-8 w-full">
                       <Image
                         src="/photo_2025-07-13_11-41-48.jpg"
-                        alt="Fan-AI Passport"
+                        alt="FAN Passport"
                         width={1920}
                         height={1080}
                         className="w-full h-auto"
@@ -87,7 +91,7 @@ const Home: NextPage = () => {
               <div className="mt-12 bg-base-100 p-6 rounded-3xl">
                 <div className="text-center">
                   <div className="text-4xl mb-4">🎫</div>
-                  <h3 className="text-xl font-bold mb-2">Fan-AI Passport</h3>
+                  <h3 className="text-xl font-bold mb-2">FAN Passport</h3>
                   <p className="text-base-content/70 mb-4">
                     An evolving NFT that gives you access to exclusive experiences from your favorite club.
                   </p>

@@ -6,8 +6,8 @@ import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "FAN-AI Passport",
-  description: "A DApp to manage your FAN-AI Passport",
+  title: "FAN Passport",
+  description: "A DApp to manage your FAN Passport",
 });
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {

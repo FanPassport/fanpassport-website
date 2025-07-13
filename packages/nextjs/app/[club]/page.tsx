@@ -178,24 +178,34 @@ const ClubPageClient = ({ club }: { club: string }) => {
               </div>
 
               <div className="space-y-4">
-                <div className="text-center">
+                <div className="text-center space-y-2">
                   {isCompleted ? (
-                    <button
-                      onClick={() => handleClaimNFT(experience.id)}
-                      disabled={claiming || !connectedAddress}
-                      className="btn btn-success w-full"
-                    >
-                      {claiming ? (
-                        <>
-                          <div className="loading loading-spinner loading-sm"></div>
-                          Claiming NFT...
-                        </>
-                      ) : !connectedAddress ? (
-                        "🔗 Connect Wallet"
-                      ) : (
-                        "🎁 Claim NFT"
-                      )}
-                    </button>
+                    <>
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <Link
+                          href={`/${club}/experiences/${experience.id}?view=results`}
+                          className="btn btn-outline flex-1"
+                        >
+                          📊 View Results
+                        </Link>
+                        <button
+                          onClick={() => handleClaimNFT(experience.id)}
+                          disabled={claiming || !connectedAddress}
+                          className="btn btn-success flex-1"
+                        >
+                          {claiming ? (
+                            <>
+                              <div className="loading loading-spinner loading-sm"></div>
+                              Claiming NFT...
+                            </>
+                          ) : !connectedAddress ? (
+                            "🔗 Connect Wallet"
+                          ) : (
+                            "🎁 Claim NFT"
+                          )}
+                        </button>
+                      </div>
+                    </>
                   ) : (
                     <Link href={`/${club}/experiences/${experience.id}`} className="btn btn-primary w-full">
                       {connectedAddress ? "🚀 Start Experience" : "🔗 Connect Wallet"}
