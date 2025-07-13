@@ -1,80 +1,296 @@
-# 🏗 FAN-AI Passport powered by Scaffold-ETH 2
+# 🎫 FAN Passport - Web3 Fan Experience Platform
 
 <h4 align="center">
   <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
+  <a href="https://scaffoldeth.io">Scaffold-ETH 2</a>
 </h4>
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+## 🌟 About FAN Passport
 
-⚙️ Built using NextJS, RainbowKit, Foundry, Wagmi, Viem, and Typescript.
+FAN Passport is a revolutionary Web3 platform that transforms how sports fans interact with their favorite clubs. Built on Ethereum blockchain technology, it provides exclusive fan experiences through NFT-based digital passports.
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+### 🏆 Key Features
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+- **🎫 NFT Passports**: Unique digital passports for each fan with club-specific branding
+- **🎮 Interactive Experiences**: Gamified experiences with quizzes, QR codes, and photo challenges
+- **🏆 NFT Rewards**: Earn exclusive NFTs by completing club experiences
+- **🔗 Token Bound Accounts**: Advanced wallet technology for secure asset management
+- **⚡ Multi-Club Support**: Support for multiple sports clubs (PSG, Barcelona, etc.)
+- **🎨 Dynamic NFT Generation**: Automatically generated NFTs with club colors and branding
 
-## Requirements
+### 🏗️ Tech Stack
 
-Before you begin, you need to install the following tools:
+- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS
+- **Blockchain**: Solidity, Foundry, ERC-721, ERC-6551 (Token Bound Accounts)
+- **Web3**: Wagmi, Viem, RainbowKit
+- **Deployment**: Vercel, IPFS
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+## 🚀 Quick Start
 
-## Quickstart
+### Prerequisites
 
-To get started with Scaffold-ETH 2, follow the steps below:
+- [Node.js](https://nodejs.org/) (>= v20.18.3)
+- [Yarn](https://yarnpkg.com/) (v1 or v2+)
+- [Git](https://git-scm.com/)
+- [Foundry](https://getfoundry.sh/) (for smart contract development)
 
-1. Install dependencies if it was skipped in CLI:
+### Installation
 
-```
-cd my-dapp-example
+```bash
+# Clone the repository
+git clone <repository-url>
+cd dapp-website
+
+# Install dependencies
 yarn install
 ```
 
-2. Run a local network in the first terminal:
+## 🛠️ Development Commands
 
-```
+### Local Development
+
+```bash
+# Start local blockchain network
 yarn chain
-```
 
-This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/foundry/foundry.toml`.
-
-3. On a second terminal, deploy the test contract:
-
-```
+# Deploy contracts to local network
 yarn deploy
+
+# Start the frontend development server
+yarn start
+
+# Run smart contract tests
+yarn test
+
+# Compile smart contracts
+yarn compile
+
+# Format code
+yarn format
+
+# Lint code
+yarn lint
 ```
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script` to deploy the contract to the network. You can also customize the deploy script.
+### Smart Contract Development
 
-4. On a third terminal, start your NextJS app:
+```bash
+# Compile contracts
+yarn foundry:compile
 
+# Run tests
+yarn foundry:test
+
+# Deploy contracts
+yarn foundry:deploy
+
+# Verify contracts on block explorer
+yarn foundry:verify
+
+# Generate TypeScript ABIs
+yarn foundry:generate-abis
+
+# Flatten contracts
+yarn foundry:flatten
+
+# Fork mainnet for testing
+yarn foundry:fork
 ```
+
+### Account Management
+
+```bash
+# Generate new account
+yarn account:generate
+
+# Import existing account
+yarn account:import
+
+# Check account balance
+yarn account
+
+# Reveal private key
+yarn account:reveal-pk
+```
+
+## 🌐 Network Configuration
+
+### Supported Networks
+
+1. **Localhost (31337)**: Development and testing
+2. **Chiliz Spicy Testnet (88882)**: Public testnet deployment
+
+### Network-Specific Commands
+
+#### Local Development
+```bash
+# Start local chain
+yarn chain
+
+# Deploy to local network
+yarn deploy
+
+# Start frontend (connects to localhost)
 yarn start
 ```
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+#### Testnet Deployment
+```bash
+# Deploy to Chiliz Spicy Testnet
+RPC_URL=https://spicy-rpc.chiliz.com yarn foundry:deploy
 
-Run smart contract test with `yarn foundry:test`
+# Verify contracts on Chiliz Explorer
+RPC_URL=https://spicy-rpc.chiliz.com yarn foundry:verify
 
-- Edit your smart contracts in `packages/foundry/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/foundry/script`
+# Start frontend with testnet configuration
+yarn start
+```
 
+## 🏗️ Build & Deployment
 
-## Documentation
+### Local Build
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+```bash
+# Build the frontend
+yarn next:build
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+# Serve the built application
+yarn next:serve
 
-## Contributing to Scaffold-ETH 2
+# Check TypeScript types
+yarn next:check-types
+```
 
-We welcome contributions to Scaffold-ETH 2!
+### Production Deployment
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+#### Vercel Deployment
+```bash
+# Deploy to Vercel
+yarn vercel
+
+# Deploy with build errors ignored (for testing)
+yarn vercel:yolo
+
+# Login to Vercel
+yarn vercel:login
+```
+
+#### IPFS Deployment
+```bash
+# Build and deploy to IPFS
+yarn ipfs
+```
+
+## 🧪 Testing
+
+### Smart Contract Testing
+```bash
+# Run all tests
+yarn test
+
+# Run specific test file
+forge test --match-test testName
+
+# Run tests with verbose output
+forge test -vvv
+```
+
+### Frontend Testing
+```bash
+# Run linting
+yarn next:lint
+
+# Check types
+yarn next:check-types
+
+# Run tests (if configured)
+yarn test
+```
+
+## 🔧 Advanced Commands
+
+### Contract Management
+```bash
+# Deploy specific contract
+DEPLOY_SCRIPT=script/DeployExperienceNFT.s.sol yarn deploy
+
+# Deploy and verify in one command
+yarn foundry:deploy-verify
+
+# Fork specific network
+FORK_URL=https://eth-mainnet.alchemyapi.io/v2/YOUR_KEY yarn foundry:fork
+```
+
+### Development Utilities
+```bash
+# Clean build artifacts
+yarn foundry:clean
+
+# Generate keystore files
+yarn foundry:generate
+
+# Import accounts from keystore
+yarn foundry:account-import
+```
+
+## 📁 Project Structure
+
+```
+dapp-website/
+├── packages/
+│   ├── foundry/          # Smart contracts & deployment
+│   │   ├── contracts/    # Solidity contracts
+│   │   ├── script/       # Deployment scripts
+│   │   ├── test/         # Contract tests
+│   │   └── scripts-js/   # JavaScript utilities
+│   └── nextjs/           # Frontend application
+│       ├── app/          # Next.js app router
+│       ├── components/   # React components
+│       ├── hooks/        # Custom hooks
+│       └── services/     # Business logic
+├── data/                 # Static data (clubs, experiences)
+└── public/              # Static assets
+```
+
+## 🎯 Core Features
+
+### Fan Passport NFT
+- ERC-721 compliant NFTs with club-specific branding
+- Token Bound Account (ERC-6551) integration
+- Dynamic metadata generation
+
+### Club Experiences
+- Interactive quiz challenges
+- QR code verification tasks
+- Photo upload and verification
+- Check-in location validation
+
+### Reward System
+- NFT rewards for completed experiences
+- Club-specific reward NFTs
+- Dynamic NFT generation with club colors
+
+## 🔐 Security
+
+- Smart contracts audited and tested
+- Secure wallet integration
+- Environment variable protection
+- Input validation and sanitization
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENCE](LICENCE) file for details.
+
+## 🆘 Support
+
+- 📖 [Documentation](https://docs.scaffoldeth.io)
+- 🐛 [Report Issues](https://github.com/scaffold-eth/scaffold-eth-2/issues)
+- 💬 [Discord Community](https://discord.gg/scaffold-eth)
+
+---
+
+**Built with ❤️ using [Scaffold-ETH 2](https://github.com/scaffold-eth/scaffold-eth-2)**
