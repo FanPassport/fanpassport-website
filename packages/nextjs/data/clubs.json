@@ -1,0 +1,257 @@
+{
+  "clubs": [
+    {
+      "id": "psg",
+      "name": "Paris Saint-Germain",
+      "shortName": "PSG",
+      "fullName": "Paris Saint-Germain Football Club",
+      "colors": {
+        "primary": "#004D98",
+        "secondary": "#DA291C",
+        "accent": "#FFFFFF",
+        "background": "#1A1A1A",
+        "text": "#FFFFFF",
+        "success": "#00C851",
+        "warning": "#FFB300",
+        "error": "#FF4444"
+      },
+      "logo": "/assets/clubs/Token-PSG.svg",
+      "logoAlt": "/assets/clubs/Token-PSG.svg",
+      "favicon": "/favicons/psg-favicon.ico",
+      "branding": {
+        "slogan": "Ici c'est Paris",
+        "tagline": "Unlock your PSG VIP experience",
+        "description": "The Web3 pass that takes you from fan to insider."
+      },
+      "experiences": [
+        {
+          "id": 1,
+          "name": "PSG Stadium Tour",
+          "isActive": true
+        },
+        {
+          "id": 2,
+          "name": "PSG FIFA Cup Final",
+          "isActive": true
+        }
+      ]
+    },
+    {
+      "id": "monaco",
+      "name": "AS Monaco",
+      "shortName": "MON",
+      "fullName": "Association Sportive de Monaco Football Club",
+      "colors": {
+        "primary": "#E30613",
+        "secondary": "#FFFFFF",
+        "accent": "#000000",
+        "background": "#1A1A1A",
+        "text": "#FFFFFF",
+        "success": "#00C851",
+        "warning": "#FFB300",
+        "error": "#FF4444"
+      },
+      "logo": "/assets/clubs/Token-ASM.svg",
+      "logoAlt": "/assets/clubs/Token-ASM.svg",
+      "favicon": "/favicons/monaco-favicon.ico",
+      "branding": {
+        "slogan": "Daghe Munegu",
+        "tagline": "Unlock your Monaco VIP experience",
+        "description": "The Web3 pass that lets you experience Monaco from the inside."
+      },
+      "experiences": [
+        {
+          "id": 1,
+          "name": "Stade Louis II Tour",
+          "isActive": true
+        },
+        {
+          "id": 2,
+          "name": "Ligue 1 Final",
+          "isActive": true
+        }
+      ]
+    },
+    {
+      "id": "barcelona",
+      "name": "FC Barcelona",
+      "shortName": "BAR",
+      "fullName": "Futbol Club Barcelona",
+      "colors": {
+        "primary": "#A50044",
+        "secondary": "#004D98",
+        "accent": "#FFD700",
+        "background": "#1A1A1A",
+        "text": "#FFFFFF",
+        "success": "#00C851",
+        "warning": "#FFB300",
+        "error": "#FF4444"
+      },
+      "logo": "/assets/clubs/Token-FCB.svg",
+      "logoAlt": "/assets/clubs/Token-FCB.svg",
+      "favicon": "/favicons/barcelona-favicon.ico",
+      "branding": {
+        "slogan": "Més que un club",
+        "tagline": "Unlock your Barça VIP experience",
+        "description": "The Web3 pass that lets you experience Barça from the inside."
+      },
+      "experiences": [
+        {
+          "id": 1,
+          "name": "Camp Nou Experience",
+          "isActive": true
+        },
+        {
+          "id": 2,
+          "name": "La Liga Final",
+          "isActive": true
+        }
+      ]
+    },
+    {
+      "id": "ac-milan",
+      "name": "AC Milan",
+      "shortName": "ACM",
+      "fullName": "Associazione Calcio Milan",
+      "colors": {
+        "primary": "#E0071B",
+        "secondary": "#000000",
+        "accent": "#FFD700",
+        "background": "#1A1A1A",
+        "text": "#FFFFFF",
+        "success": "#00C851",
+        "warning": "#FFB300",
+        "error": "#FF4444"
+      },
+      "logo": "/assets/clubs/Token-ACM.svg",
+      "logoAlt": "/assets/clubs/Token-ACM.svg",
+      "favicon": "/favicons/ac-milan-favicon.ico",
+      "branding": {
+        "slogan": "Forza Milan",
+        "tagline": "Unlock your AC Milan VIP experience",
+        "description": "The Web3 pass that lets you experience AC Milan from the inside."
+      },
+      "experiences": [
+        {
+          "id": 1,
+          "name": "San Siro Tour",
+          "isActive": true
+        },
+        {
+          "id": 2,
+          "name": "Serie A Final",
+          "isActive": true
+        }
+      ]
+    },
+    {
+      "id": "juventus",
+      "name": "Juventus FC",
+      "shortName": "JUV",
+      "fullName": "Juventus Football Club",
+      "colors": {
+        "primary": "#000000",
+        "secondary": "#FFFFFF",
+        "accent": "#FFD700",
+        "background": "#1A1A1A",
+        "text": "#FFFFFF",
+        "success": "#00C851",
+        "warning": "#FFB300",
+        "error": "#FF4444"
+      },
+      "logo": "/assets/clubs/Token-JUV.svg",
+      "logoAlt": "/assets/clubs/Token-JUV.svg",
+      "favicon": "/favicons/juventus-favicon.ico",
+      "branding": {
+        "slogan": "Fino alla fine",
+        "tagline": "Unlock your Juventus VIP experience",
+        "description": "The Web3 pass that lets you experience Juventus from the inside."
+      },
+      "experiences": [
+        {
+          "id": 1,
+          "name": "Allianz Stadium Tour",
+          "isActive": true
+        },
+        {
+          "id": 2,
+          "name": "Serie A Final",
+          "isActive": true
+        }
+      ]
+    },
+    {
+      "id": "napoli",
+      "name": "SSC Napoli",
+      "shortName": "NAP",
+      "fullName": "Società Sportiva Calcio Napoli",
+      "colors": {
+        "primary": "#009246",
+        "secondary": "#FFFFFF",
+        "accent": "#CE2B37",
+        "background": "#1A1A1A",
+        "text": "#FFFFFF",
+        "success": "#00C851",
+        "warning": "#FFB300",
+        "error": "#FF4444"
+      },
+      "logo": "/assets/clubs/Token-NAP.svg",
+      "logoAlt": "/assets/clubs/Token-NAP.svg",
+      "favicon": "/favicons/napoli-favicon.ico",
+      "branding": {
+        "slogan": "Forza Napoli",
+        "tagline": "Unlock your Napoli VIP experience",
+        "description": "The Web3 pass that lets you experience Napoli from the inside."
+      },
+      "experiences": [
+        {
+          "id": 1,
+          "name": "Diego Maradona Stadium Tour",
+          "isActive": true
+        },
+        {
+          "id": 2,
+          "name": "Serie A Final",
+          "isActive": true
+        }
+      ]
+    },
+    {
+      "id": "manchester-city",
+      "name": "Manchester City",
+      "shortName": "CITY",
+      "fullName": "Manchester City Football Club",
+      "colors": {
+        "primary": "#6CABDD",
+        "secondary": "#FFFFFF",
+        "accent": "#FFD700",
+        "background": "#1A1A1A",
+        "text": "#FFFFFF",
+        "success": "#00C851",
+        "warning": "#FFB300",
+        "error": "#FF4444"
+      },
+      "logo": "/assets/clubs/Token-CITY.svg",
+      "logoAlt": "/assets/clubs/Token-CITY.svg",
+      "favicon": "/favicons/manchester-city-favicon.ico",
+      "branding": {
+        "slogan": "City Till I Die",
+        "tagline": "Unlock your Manchester City VIP experience",
+        "description": "The Web3 pass that lets you experience City from the inside."
+      },
+      "experiences": [
+        {
+          "id": 1,
+          "name": "Etihad Stadium Tour",
+          "isActive": true
+        },
+        {
+          "id": 2,
+          "name": "Premier League Final",
+          "isActive": true
+        }
+      ]
+    }
+  ],
+  "defaultClub": "psg"
+} 

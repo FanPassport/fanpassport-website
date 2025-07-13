@@ -1,0 +1,568 @@
+{
+  "experiences": [
+    {
+      "id": 1,
+      "clubId": "psg",
+      "name": "PSG Stadium Tour",
+      "isActive": true,
+      "rewardAmount": 100,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Historique",
+          "description": "Quelle année le PSG a-t-il été fondé ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année le PSG a-t-il été fondé ?",
+          "answer": "1970",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Entrée",
+          "description": "Scanne le QR code à l'entrée du stade",
+          "taskType": "QR_CODE",
+          "data": "qr_entrance_parc_princes",
+          "answer": "123456789",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Quiz Tribune",
+          "description": "Quelle est la capacité du Parc des Princes ?",
+          "taskType": "QUIZ",
+          "data": "Quelle est la capacité du Parc des Princes ?",
+          "answer": "47929",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Check-in Vestiaires",
+          "description": "Fais un check-in dans les vestiaires",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vestiaires",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Quiz Joueur",
+          "description": "Quel joueur a marqué le plus de buts pour le PSG ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur a marqué le plus de buts pour le PSG ?",
+          "answer": "Edinson Cavani",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "clubId": "psg",
+      "name": "PSG FIFA Cup Final",
+      "isActive": true,
+      "rewardAmount": 200,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Betting - Score Final",
+          "description": "Quel sera le score final de la finale PSG vs Chelsea ? (ex: 2-1, 3-2, 1-0)",
+          "taskType": "QUIZ",
+          "data": "Quel sera le score final de la finale PSG vs Chelsea ? (ex: 2-1, 3-2, 1-0)",
+          "answer": "2-1",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Tribune Auteuil",
+          "description": "Scanne le QR code dans la Tribune Auteuil",
+          "taskType": "QR_CODE",
+          "data": "qr_tribune_auteuil_fifa",
+          "answer": "fifa_cup_2024",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Betting - Meilleur Buteur",
+          "description": "Qui sera le meilleur buteur de la finale ? (Vitinha, Randal Kolo Muani, Bradley Barcola, Cole Palmer)",
+          "taskType": "QUIZ",
+          "data": "Qui sera le meilleur buteur de la finale ? (Vitinha, Randal Kolo Muani, Bradley Barcola, Cole Palmer)",
+          "answer": "Vitinha",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Check-in Zone VIP",
+          "description": "Fais un check-in dans la zone VIP du stade",
+          "taskType": "CHECK_IN",
+          "data": "checkin_zone_vip_fifa",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Betting - Homme du Match",
+          "description": "Qui sera l'homme du match de la finale ? (Vitinha, Randal Kolo Muani, Bradley Barcola, Cole Palmer, Gianluigi Donnarumma)",
+          "taskType": "QUIZ",
+          "data": "Qui sera l'homme du match de la finale ? (Vitinha, Randal Kolo Muani, Bradley Barcola, Cole Palmer, Gianluigi Donnarumma)",
+          "answer": "Vitinha",
+          "isCompleted": false
+        },
+        {
+          "id": 5,
+          "name": "QR Code Vestiaire",
+          "description": "Scanne le QR code dans les vestiaires des joueurs",
+          "taskType": "QR_CODE",
+          "data": "qr_vestiaire_psg_fifa",
+          "answer": "psg_champions_2024",
+          "isCompleted": false
+        },
+        {
+          "id": 6,
+          "name": "Betting - Temps Premier But",
+          "description": "À quelle minute sera marqué le premier but ? (1-15, 16-30, 31-45, 46-60, 61-75, 76-90, Pas de but)",
+          "taskType": "QUIZ",
+          "data": "À quelle minute sera marqué le premier but ? (1-15, 16-30, 31-45, 46-60, 61-75, 76-90, Pas de but)",
+          "answer": "16-30",
+          "isCompleted": false
+        },
+        {
+          "id": 7,
+          "name": "Betting - Nombre de Cartons",
+          "description": "Combien de cartons jaunes seront distribués pendant le match ? (0-2, 3-4, 5-6, 7+)",
+          "taskType": "QUIZ",
+          "data": "Combien de cartons jaunes seront distribués pendant le match ? (0-2, 3-4, 5-6, 7+)",
+          "answer": "3-4",
+          "isCompleted": false
+        },
+        {
+          "id": 8,
+          "name": "Betting - Corner Winner",
+          "description": "Quelle équipe aura le plus de corners ? (PSG, Chelsea, Égalité)",
+          "taskType": "QUIZ",
+          "data": "Quelle équipe aura le plus de corners ? (PSG, Chelsea, Égalité)",
+          "answer": "PSG",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "clubId": "real-madrid",
+      "name": "Real Madrid Bernabéu Experience",
+      "isActive": true,
+      "rewardAmount": 150,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Bernabéu",
+          "description": "Quelle année le Santiago Bernabéu a-t-il été inauguré ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année le Santiago Bernabéu a-t-il été inauguré ?",
+          "answer": "1947",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Musée",
+          "description": "Scanne le QR code dans le musée du Real Madrid",
+          "taskType": "QR_CODE",
+          "data": "qr_museo_real_madrid",
+          "answer": "hala_madrid",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Quiz Champions League",
+          "description": "Combien de fois le Real Madrid a-t-il remporté la Champions League ?",
+          "taskType": "QUIZ",
+          "data": "Combien de fois le Real Madrid a-t-il remporté la Champions League ?",
+          "answer": "14",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Check-in Vestiaires",
+          "description": "Fais un check-in dans les vestiaires du Bernabéu",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vestiaires_bernabeu",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Quiz Joueur Légende",
+          "description": "Quel joueur a remporté 5 Champions League avec le Real Madrid ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur a remporté 5 Champions League avec le Real Madrid ?",
+          "answer": "Cristiano Ronaldo",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "clubId": "real-madrid",
+      "name": "Real Madrid Champions League Final",
+      "isActive": true,
+      "rewardAmount": 250,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Histoire Real",
+          "description": "Quelle année le Real Madrid a-t-il été fondé ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année le Real Madrid a-t-il été fondé ?",
+          "answer": "1902",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Tribune",
+          "description": "Scanne le QR code dans la Tribune Sud",
+          "taskType": "QR_CODE",
+          "data": "qr_tribune_sud_bernabeu",
+          "answer": "madrid_champions_2024",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Check-in Zone VIP",
+          "description": "Fais un check-in dans la zone VIP du Bernabéu",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vip_bernabeu",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Quiz Joueur Actuel",
+          "description": "Quel joueur actuel du Real Madrid a remporté le Ballon d'Or 2022 ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur actuel du Real Madrid a remporté le Ballon d'Or 2022 ?",
+          "answer": "Karim Benzema",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "clubId": "barcelona",
+      "name": "Barcelona Camp Nou Experience",
+      "isActive": true,
+      "rewardAmount": 150,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Camp Nou",
+          "description": "Quelle année le Camp Nou a-t-il été inauguré ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année le Camp Nou a-t-il été inauguré ?",
+          "answer": "1957",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Musée",
+          "description": "Scanne le QR code dans le musée du Barça",
+          "taskType": "QR_CODE",
+          "data": "qr_museo_barcelona",
+          "answer": "mes_que_un_club",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Quiz La Liga",
+          "description": "Combien de fois le Barça a-t-il remporté la Liga ?",
+          "taskType": "QUIZ",
+          "data": "Combien de fois le Barça a-t-il remporté la Liga ?",
+          "answer": "27",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Check-in Vestiaires",
+          "description": "Fais un check-in dans les vestiaires du Camp Nou",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vestiaires_camp_nou",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Quiz Joueur Légende",
+          "description": "Quel joueur a marqué le plus de buts pour le Barça ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur a marqué le plus de buts pour le Barça ?",
+          "answer": "Lionel Messi",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "clubId": "barcelona",
+      "name": "Barcelona El Clásico Experience",
+      "isActive": true,
+      "rewardAmount": 200,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Clásico",
+          "description": "Quelle année a eu lieu le premier Clásico ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année a eu lieu le premier Clásico ?",
+          "answer": "1902",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Tribune",
+          "description": "Scanne le QR code dans la Tribune Nord",
+          "taskType": "QR_CODE",
+          "data": "qr_tribune_nord_camp_nou",
+          "answer": "barca_clasico_2024",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Check-in Zone VIP",
+          "description": "Fais un check-in dans la zone VIP du Camp Nou",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vip_camp_nou",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Quiz Joueur Actuel",
+          "description": "Quel joueur actuel du Barça a remporté le Ballon d'Or 2023 ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur actuel du Barça a remporté le Ballon d'Or 2023 ?",
+          "answer": "Lionel Messi",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "clubId": "manchester-united",
+      "name": "Manchester United Old Trafford Tour",
+      "isActive": true,
+      "rewardAmount": 150,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Old Trafford",
+          "description": "Quelle année Old Trafford a-t-il été inauguré ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année Old Trafford a-t-il été inauguré ?",
+          "answer": "1910",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Musée",
+          "description": "Scanne le QR code dans le musée d'Old Trafford",
+          "taskType": "QR_CODE",
+          "data": "qr_museum_old_trafford",
+          "answer": "glory_glory_man_united",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Quiz Premier League",
+          "description": "Combien de fois Manchester United a-t-il remporté la Premier League ?",
+          "taskType": "QUIZ",
+          "data": "Combien de fois Manchester United a-t-il remporté la Premier League ?",
+          "answer": "20",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Check-in Vestiaires",
+          "description": "Fais un check-in dans les vestiaires d'Old Trafford",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vestiaires_old_trafford",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Quiz Joueur Légende",
+          "description": "Quel joueur a marqué le plus de buts pour Manchester United ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur a marqué le plus de buts pour Manchester United ?",
+          "answer": "Wayne Rooney",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "clubId": "manchester-united",
+      "name": "Manchester United Champions League Final",
+      "isActive": true,
+      "rewardAmount": 250,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Histoire United",
+          "description": "Quelle année Manchester United a-t-il été fondé ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année Manchester United a-t-il été fondé ?",
+          "answer": "1878",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Tribune",
+          "description": "Scanne le QR code dans la Stretford End",
+          "taskType": "QR_CODE",
+          "data": "qr_stretford_end",
+          "answer": "united_champions_2024",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Check-in Zone VIP",
+          "description": "Fais un check-in dans la zone VIP d'Old Trafford",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vip_old_trafford",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Quiz Joueur Actuel",
+          "description": "Quel joueur actuel de Manchester United a remporté le Ballon d'Or 2008 ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur actuel de Manchester United a remporté le Ballon d'Or 2008 ?",
+          "answer": "Cristiano Ronaldo",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "clubId": "bayern-munich",
+      "name": "Bayern Munich Allianz Arena Tour",
+      "isActive": true,
+      "rewardAmount": 150,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Allianz Arena",
+          "description": "Quelle année l'Allianz Arena a-t-elle été inaugurée ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année l'Allianz Arena a-t-elle été inaugurée ?",
+          "answer": "2005",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Musée",
+          "description": "Scanne le QR code dans le musée du Bayern",
+          "taskType": "QR_CODE",
+          "data": "qr_museum_bayern",
+          "answer": "mia_san_mia",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Quiz Bundesliga",
+          "description": "Combien de fois le Bayern a-t-il remporté la Bundesliga ?",
+          "taskType": "QUIZ",
+          "data": "Combien de fois le Bayern a-t-il remporté la Bundesliga ?",
+          "answer": "33",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Check-in Vestiaires",
+          "description": "Fais un check-in dans les vestiaires de l'Allianz Arena",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vestiaires_allianz",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 4,
+          "name": "Quiz Joueur Légende",
+          "description": "Quel joueur a marqué le plus de buts pour le Bayern Munich ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur a marqué le plus de buts pour le Bayern Munich ?",
+          "answer": "Gerd Müller",
+          "isCompleted": false
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "clubId": "bayern-munich",
+      "name": "Bayern Munich Champions League Experience",
+      "isActive": true,
+      "rewardAmount": 200,
+      "rewardToken": "ETH",
+      "tasks": [
+        {
+          "id": 0,
+          "name": "Quiz Histoire Bayern",
+          "description": "Quelle année le Bayern Munich a-t-il été fondé ?",
+          "taskType": "QUIZ",
+          "data": "Quelle année le Bayern Munich a-t-il été fondé ?",
+          "answer": "1900",
+          "isCompleted": false
+        },
+        {
+          "id": 1,
+          "name": "QR Code Tribune",
+          "description": "Scanne le QR code dans la Tribune Sud",
+          "taskType": "QR_CODE",
+          "data": "qr_tribune_sud_allianz",
+          "answer": "bayern_champions_2024",
+          "isCompleted": false
+        },
+        {
+          "id": 2,
+          "name": "Check-in Zone VIP",
+          "description": "Fais un check-in dans la zone VIP de l'Allianz Arena",
+          "taskType": "CHECK_IN",
+          "data": "checkin_vip_allianz",
+          "answer": "",
+          "isCompleted": false
+        },
+        {
+          "id": 3,
+          "name": "Quiz Joueur Actuel",
+          "description": "Quel joueur actuel du Bayern a remporté le Ballon d'Or 2020 ?",
+          "taskType": "QUIZ",
+          "data": "Quel joueur actuel du Bayern a remporté le Ballon d'Or 2020 ?",
+          "answer": "Robert Lewandowski",
+          "isCompleted": false
+        }
+      ]
+    }
+  ],
+  "userProgress": {
+    "0x60b07C5f61FB3580B79Fb42E73FBE4bce69E610b": {
+      "1": {
+        "experienceStarted": true,
+        "experienceCompleted": false,
+        "completedTasks": []
+      },
+      "2": {
+        "experienceStarted": true,
+        "experienceCompleted": false,
+        "completedTasks": []
+      }
+    }
+  }
+}
