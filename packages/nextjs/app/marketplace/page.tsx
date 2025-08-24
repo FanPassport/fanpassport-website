@@ -38,6 +38,7 @@ const MarketplacePage: NextPage = () => {
   const [filter, setFilter] = useState<"all" | "mine">("all");
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [useContractImages] = useState(true);
 
   // Get total supply of NFTs
   const { data: totalSupply } = useScaffoldReadContract({
@@ -113,7 +114,18 @@ const MarketplacePage: NextPage = () => {
               const { tokenId, experienceId, owner } = contractNFT;
               console.log(`🔍 Processing NFT #${tokenId} with experienceId ${experienceId} owned by ${owner}`);
 
-              // Find the experience and its club
+              // Get metadata from smart contract (same as MetaMask)
+              const metadataResponse = await fetch(`/api/contract/getNFTMetadata/${tokenId}`);
+              let contractMetadata = null;
+
+              if (metadataResponse.ok) {
+                contractMetadata = await metadataResponse.json();
+                console.log(`📄 Contract metadata for NFT #${tokenId}:`, contractMetadata);
+              } else {
+                console.warn(`⚠️ Could not get contract metadata for NFT #${tokenId}, using fallback`);
+              }
+
+              // Find the experience and its club for additional info
               const experience = experiences.find((exp: any) => exp.id === experienceId);
               console.log(`🎯 Found experience for ID ${experienceId}:`, experience);
 
@@ -127,14 +139,17 @@ const MarketplacePage: NextPage = () => {
               const club = clubs.find(c => c.id === clubId);
               console.log(`🏆 Found club for ID ${clubId}:`, club);
 
-              // Generate NFT metadata with club info
-              const metadata = {
-                name: `${club?.name || "Unknown Club"} - Experience #${experienceId}`,
-                description: `NFT reward for completing ${experience?.name || `experience #${experienceId}`}`,
-                image: generateNFTImage(experienceId, club),
-              };
+              // Use contract metadata if available and useContractImages is true, otherwise fallback to generated metadata
+              const metadata =
+                contractMetadata && useContractImages
+                  ? contractMetadata
+                  : {
+                      name: `${club?.name || "Unknown Club"} - Experience #${experienceId}`,
+                      description: `NFT reward for completing ${experience?.name || `experience #${experienceId}`}`,
+                      image: generateNFTImage(experienceId, club),
+                    };
 
-              console.log(`📝 Generated metadata for NFT #${tokenId}:`, metadata);
+              console.log(`📝 Final metadata for NFT #${tokenId}:`, metadata);
 
               nfts.push({
                 tokenId,
@@ -174,7 +189,7 @@ const MarketplacePage: NextPage = () => {
     };
 
     loadAllNFTs();
-  }, [totalSupply, clubs, retryCount]);
+  }, [totalSupply, clubs, retryCount, useContractImages]);
 
   // Retry function
   const handleRetry = () => {
@@ -385,10 +400,20 @@ const MarketplacePage: NextPage = () => {
         </div>
 
         {/* Debug Info */}
-        <div className="text-sm text-base-content/60 mb-4">
-          Total Supply: {totalSupply?.toString() || "Loading..."} | Loaded NFTs: {allNFTs.length} | Retry Count:{" "}
-          {retryCount}
-        </div>
+        {/* <div className="text-sm text-base-content/60 mb-4">
+          Total Supply: {totalSupply?.toString() || "Loading..."} | 
+          Loaded NFTs: {allNFTs.length} | 
+          Retry Count: {retryCount} |
+          <label className="flex items-center gap-2 ml-4">
+            <input
+              type="checkbox"
+              checked={useContractImages}
+              onChange={(e) => setUseContractImages(e.target.checked)}
+              className="checkbox checkbox-sm"
+            />
+            <span>Use Contract Images (MetaMask style)</span>
+          </label>
+        </div> */}
 
         {/* Regeneration Controls */}
         {allNFTs.length > 0 && (
@@ -508,21 +533,24 @@ const MarketplacePage: NextPage = () => {
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filteredNFTs.map(nft => (
-              <div key={nft.tokenId} className="bg-base-100 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div
+                key={nft.tokenId}
+                className="bg-base-100 rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow flex flex-col"
+              >
                 <div className="text-center mb-4">
-                  {/* NFT Image Container */}
-                  <div className="w-full h-48 rounded-lg mb-4 relative overflow-hidden">
+                  {/* NFT Image Container - Perfect Square */}
+                  <div className="nft-image-container mb-4">
                     {/* Generated NFT Image */}
                     <img
                       src={nft.image}
                       alt={`NFT ${nft.tokenId}`}
-                      className="w-full h-full object-cover rounded-lg"
+                      className="nft-image"
                       onError={e => {
                         // Fallback to emoji if image fails to load
                         console.log(`Image failed to load for NFT ${nft.tokenId}:`, nft.image);
                         const target = e.target as HTMLImageElement;
                         target.style.display = "none";
-                        const fallback = target.parentElement?.querySelector(".fallback-emoji") as HTMLElement;
+                        const fallback = target.parentElement?.querySelector(".nft-image-fallback") as HTMLElement;
                         if (fallback) fallback.style.display = "flex";
                       }}
                       onLoad={() => {
@@ -532,7 +560,7 @@ const MarketplacePage: NextPage = () => {
 
                     {/* Fallback Emoji - Only shows if image fails */}
                     <div
-                      className="fallback-emoji absolute inset-0 flex items-center justify-center text-6xl"
+                      className="nft-image-fallback fallback-emoji"
                       style={{
                         display: "none",
                         background: nft.club
