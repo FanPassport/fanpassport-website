@@ -41,8 +41,8 @@ const Home: NextPage = () => {
                   <>
                     <div className="flex justify-center items-center space-x-2 flex-col mb-8 w-full">
                       <Image
-                        src="/photo_2025-07-13_11-41-48.jpg"
-                        alt="FAN Passport"
+                        src="/logo-banner.jpg"
+                        alt="Fan Passport"
                         width={1920}
                         height={1080}
                         className="w-full h-auto"

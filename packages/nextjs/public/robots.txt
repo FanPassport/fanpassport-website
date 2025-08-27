@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://fanpassport.xyz/sitemap.xml
+
+# Disallow admin/debug routes
+Disallow: /debug
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /experiences
+Allow: /gallery
+Allow: /marketplace
+Allow: /blockexplorer
+Allow: /*/experiences/*
+
+# Crawl delay (optional)
+Crawl-delay: 1
