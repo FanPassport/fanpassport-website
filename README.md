@@ -1,13 +1,14 @@
-# 🎫 FAN Passport - Web3 Fan Experience Platform
+# 🎫 Fan Passport - Web3 Fan Experience Platform
 
 <h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Scaffold-ETH 2</a>
+<a href="https://fanpassport.xyz/?utm_source=github">fanpassport.xyz</a> │
+<a href="https://x.com/fanpassport">X (Twitter)</a> │
+<a href="https://t.me/fanpassport">Telegram</a>
 </h4>
 
-## 🌟 About FAN Passport
+## 🌟 About Fan Passport
 
-FAN Passport is a revolutionary Web3 platform that transforms how sports fans interact with their favorite clubs. Built on Ethereum blockchain technology, it provides exclusive fan experiences through NFT-based digital passports.
+Fan Passport is a revolutionary Web3 platform that transforms how sports fans interact with their favorite clubs. Built on Ethereum blockchain technology, it provides exclusive fan experiences through NFT-based digital passports.
 
 ### 🏆 Key Features
 
@@ -21,7 +22,7 @@ FAN Passport is a revolutionary Web3 platform that transforms how sports fans in
 ### 🏗️ Tech Stack
 
 - **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS
-- **Blockchain**: Solidity, Foundry, ERC-721, ERC-6551 (Token Bound Accounts)
+- **Blockchain**: Foundry, ERC-721, ERC-6551 (Token Bound Accounts), Scaffold ETH 2
 - **Web3**: Wagmi, Viem, RainbowKit
 - **Deployment**: Vercel, IPFS
 
@@ -123,6 +124,7 @@ yarn account:reveal-pk
 ### Network-Specific Commands
 
 #### Local Development
+
 ```bash
 # Start local chain
 yarn chain
@@ -135,6 +137,7 @@ yarn start
 ```
 
 #### Testnet Deployment
+
 ```bash
 # Deploy to Chiliz Spicy Testnet
 RPC_URL=https://spicy-rpc.chiliz.com yarn foundry:deploy
@@ -164,6 +167,7 @@ yarn next:check-types
 ### Production Deployment
 
 #### Vercel Deployment
+
 ```bash
 # Deploy to Vercel
 yarn vercel
@@ -176,6 +180,7 @@ yarn vercel:login
 ```
 
 #### IPFS Deployment
+
 ```bash
 # Build and deploy to IPFS
 yarn ipfs
@@ -184,6 +189,7 @@ yarn ipfs
 ## 🧪 Testing
 
 ### Smart Contract Testing
+
 ```bash
 # Run all tests
 yarn test
@@ -196,6 +202,7 @@ forge test -vvv
 ```
 
 ### Frontend Testing
+
 ```bash
 # Run linting
 yarn next:lint
@@ -210,6 +217,7 @@ yarn test
 ## 🔧 Advanced Commands
 
 ### Contract Management
+
 ```bash
 # Deploy specific contract
 DEPLOY_SCRIPT=script/DeployExperienceNFT.s.sol yarn deploy
@@ -222,6 +230,7 @@ FORK_URL=https://eth-mainnet.alchemyapi.io/v2/YOUR_KEY yarn foundry:fork
 ```
 
 ### Development Utilities
+
 ```bash
 # Clean build artifacts
 yarn foundry:clean
@@ -255,17 +264,20 @@ dapp-website/
 ## 🎯 Core Features
 
 ### Fan Passport NFT
+
 - ERC-721 compliant NFTs with club-specific branding
 - Token Bound Account (ERC-6551) integration
 - Dynamic metadata generation
 
 ### Club Experiences
+
 - Interactive quiz challenges
 - QR code verification tasks
 - Photo upload and verification
 - Check-in location validation
 
 ### Reward System
+
 - NFT rewards for completed experiences
 - Club-specific reward NFTs
 - Dynamic NFT generation with club colors
