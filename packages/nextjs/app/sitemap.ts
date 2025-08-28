@@ -31,10 +31,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/debug`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.3,
+    },
+    {
       url: `${baseUrl}/blockexplorer`,
       lastModified: new Date(),
       changeFrequency: "daily" as const,
-      priority: 0.9,
+      priority: 0.7,
     },
   ];
 
@@ -46,5 +52,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...staticRoutes, ...clubRoutes];
+  // API routes
+  const apiRoutes = [
+    {
+      url: `${baseUrl}/api/clubs`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/api/experiences`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/api/nft`,
+      lastModified: new Date(),
+      changeFrequency: "daily" as const,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/api/contract`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.3,
+    },
+  ];
+
+  return [...staticRoutes, ...clubRoutes, ...apiRoutes];
 }
