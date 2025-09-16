@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { hardhat } from "viem/chains";
 import { CurrencyDollarIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { HeartIcon } from "@heroicons/react/24/outline";
 import { SwitchTheme } from "~~/components/SwitchTheme";
 import { Faucet, FaucetButton } from "~~/components/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
@@ -50,7 +49,11 @@ export const Footer = () => {
           <div className="flex justify-center items-center gap-2 text-sm w-full">
             <div className="flex justify-center items-center gap-2">
               <p className="m-0 text-center">
-                Built with <HeartIcon className="inline-block h-4 w-4" /> at PSG Stadium during Chiliz Hackathon Paris
+                Built at the iconic Parc des Princes stadium in Paris, home of{" "}
+                <Link href="/psg" className="underline">
+                  PSG
+                </Link>
+                , during the Chiliz & Socios Hackathon
               </p>
             </div>
           </div>

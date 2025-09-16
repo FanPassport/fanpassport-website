@@ -59,9 +59,6 @@ export const ClubSelector = () => {
       <div className="dropdown dropdown-end" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <div tabIndex={0} role="button" className="btn btn-ghost btn-sm gap-2">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-full bg-gray-400 flex items-center justify-center">
-              <span className="text-xs">?</span>
-            </div>
             <span className="text-sm font-medium">Choose a club</span>
           </div>
           <ChevronDownIcon className="h-4 w-4" />
