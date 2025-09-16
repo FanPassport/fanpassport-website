@@ -113,13 +113,18 @@ export const Header = () => {
           </ul>
         </details>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
-          <div className="flex relative w-10 h-10">
-            <div
-              className="w-full h-full rounded-full flex items-center justify-center text-white font-bold text-lg"
-              style={{ backgroundColor: "#c3c4c4" }}
-            >
-              🎫
-            </div>
+          <div className="flex relative w-10 h-10 items-center justify-center">
+            <img
+              src="/android-chrome-192x192.png"
+              srcSet="/android-chrome-192x192.png 1x, /android-chrome-512x512.png 2x"
+              alt="Fan Passport Logo"
+              className="w-10 h-10 rounded-full"
+              width={40}
+              height={40}
+              style={{ display: "block" }}
+              loading="eager"
+              decoding="async"
+            />
           </div>
           <div className="flex flex-col">
             <span className="font-bold leading-tight">FAN Passport</span>
