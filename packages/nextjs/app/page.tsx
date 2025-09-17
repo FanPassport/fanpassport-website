@@ -52,13 +52,9 @@ const Home: NextPage = () => {
           ) : (
             <>
               <div className="text-center mt-10 mb-8">
-                <h1 className="text-4xl md:text-5xl font-extrabold mb-2">
-                  {!isConnected ? "Connect your wallet" : "Choose your club"}
-                </h1>
+                <h1 className="text-4xl md:text-5xl font-extrabold mb-2">Choose your club</h1>
                 <p className="text-lg md:text-xl text-base-content/80 mb-6">
-                  {!isConnected
-                    ? "Connect your wallet to start your FAN Passport journey and access exclusive club experiences."
-                    : "Select your favorite club to access exclusive experiences and mint your FAN Passport NFT."}
+                  Select your favorite club to access exclusive experiences and mint your FAN Passport NFT.
                 </p>
                 {!isConnected && (
                   <div className="flex flex-col items-center justify-center gap-4 mt-6">
@@ -67,33 +63,31 @@ const Home: NextPage = () => {
                 )}
               </div>
 
-              {isConnected && (
-                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8">
-                  {clubs.map(club => (
-                    <button
-                      key={club.id}
-                      onClick={async () => {
-                        await changeClub(club.id);
-                        router.push(`/${club.id}`);
-                      }}
-                      className="group bg-base-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-left cursor-pointer border border-base-200 hover:border-primary"
-                    >
-                      <div className="text-center">
-                        <div className="w-32 h-32 mx-auto mb-6 relative">
-                          <Image
-                            src={club.logo}
-                            alt={`${club.name} logo`}
-                            width={128}
-                            height={128}
-                            className="w-full h-full object-contain rounded-full border border-base-200"
-                          />
-                        </div>
-                        <h3 className="text-xl font-bold mb-2">{club.name}</h3>
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8">
+                {clubs.map(club => (
+                  <button
+                    key={club.id}
+                    onClick={async () => {
+                      await changeClub(club.id);
+                      router.push(`/${club.id}`);
+                    }}
+                    className="group bg-base-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-left cursor-pointer border border-base-200 hover:border-primary"
+                  >
+                    <div className="text-center">
+                      <div className="w-32 h-32 mx-auto mb-6 relative">
+                        <Image
+                          src={club.logo}
+                          alt={`${club.name} logo`}
+                          width={128}
+                          height={128}
+                          className="w-full h-full object-contain rounded-full border border-base-200"
+                        />
                       </div>
-                    </button>
-                  ))}
-                </div>
-              )}
+                      <h3 className="text-xl font-bold mb-2">{club.name}</h3>
+                    </div>
+                  </button>
+                ))}
+              </div>
 
               {/* Info Section */}
               <div className="mt-16 bg-base-100 p-8 rounded-3xl shadow-lg max-w-3xl mx-auto">
