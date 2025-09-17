@@ -17,15 +17,18 @@ export const wagmiConfig = createConfig({
   connectors: wagmiConnectors,
   ssr: true,
   client: ({ chain }) => {
-    let rpcFallbacks = [http()];
+    const defaultRpcUrl = chain.rpcUrls?.default?.http?.[0];
+    let rpcFallbacks = [http(defaultRpcUrl, { timeout: 2000 })];
     const rpcOverrideUrl = (scaffoldConfig.rpcOverrides as ScaffoldConfig["rpcOverrides"])?.[chain.id];
     if (rpcOverrideUrl) {
-      rpcFallbacks = [http(rpcOverrideUrl), http()];
+      rpcFallbacks = [http(rpcOverrideUrl, { timeout: 2000 }), http(defaultRpcUrl, { timeout: 2000 })];
     } else {
       const alchemyHttpUrl = getAlchemyHttpUrl(chain.id);
       if (alchemyHttpUrl) {
         const isUsingDefaultKey = scaffoldConfig.alchemyApiKey === DEFAULT_ALCHEMY_API_KEY;
-        rpcFallbacks = isUsingDefaultKey ? [http(), http(alchemyHttpUrl)] : [http(alchemyHttpUrl), http()];
+        rpcFallbacks = isUsingDefaultKey
+          ? [http(defaultRpcUrl, { timeout: 2000 }), http(alchemyHttpUrl, { timeout: 2000 })]
+          : [http(alchemyHttpUrl, { timeout: 2000 }), http(defaultRpcUrl, { timeout: 2000 })];
       }
     }
     return createClient({

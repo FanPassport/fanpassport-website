@@ -34,6 +34,18 @@ interface UserProgress {
   completedTasks: number[];
 }
 
+interface Match {
+  id: string;
+  status: string;
+  competition: string;
+  kickoff: string;
+  venue: string;
+  hometeam: string;
+  awayteam: string;
+  score: string | null;
+  ticket?: string;
+}
+
 type PageProps = {
   params: Promise<{ club: string }>;
 };
@@ -44,6 +56,7 @@ const ClubPageClient = ({ club }: { club: string }) => {
   const [experiences, setExperiences] = useState<Experience[]>([]);
   const [userProgress, setUserProgress] = useState<Record<number, UserProgress>>({});
   const [loading, setLoading] = useState(true);
+  const [matches, setMatches] = useState<Match[]>([]);
   const { clubs, loading: clubsLoading } = useClub();
 
   // Scaffold-ETH hook for writing to contract
@@ -51,17 +64,20 @@ const ClubPageClient = ({ club }: { club: string }) => {
     contractName: "ExperienceNFT",
   });
 
+  // Hook for MatchNFT contract (we'll add this to external contracts)
+  const { writeContractAsync: writeMatchNFTAsync } = useScaffoldWriteContract({
+    contractName: "MatchNFT",
+  });
+
   // Find the current club based on the URL parameter
   const currentClub = clubs.find(clubData => clubData.id === club);
+
+  // Filter matches for this club
+  const clubMatches = matches.filter(match => match.hometeam === club || match.awayteam === club);
 
   // Load experiences and user progress
   useEffect(() => {
     const loadData = async () => {
-      if (!connectedAddress) {
-        setLoading(false);
-        return;
-      }
-
       try {
         // Load experiences for this club
         const response = await fetch("/data/experiences.json");
@@ -69,15 +85,22 @@ const ClubPageClient = ({ club }: { club: string }) => {
         const clubExperiences = data.experiences.filter((exp: Experience) => exp.clubId === club);
         setExperiences(clubExperiences);
 
-        // Load user progress for each experience
-        const progressData: Record<number, UserProgress> = {};
-        for (const experience of clubExperiences) {
-          const progress = await hybridExperienceService.getUserProgress(connectedAddress, experience.id);
-          if (progress) {
-            progressData[experience.id] = progress;
+        // Load matches data
+        const matchesResponse = await fetch("/data/matches.json");
+        const matchesData = await matchesResponse.json();
+        setMatches(matchesData.matches);
+
+        // Load user progress for each experience (only if wallet connected)
+        if (connectedAddress) {
+          const progressData: Record<number, UserProgress> = {};
+          for (const experience of clubExperiences) {
+            const progress = await hybridExperienceService.getUserProgress(connectedAddress, experience.id);
+            if (progress) {
+              progressData[experience.id] = progress;
+            }
           }
+          setUserProgress(progressData);
         }
-        setUserProgress(progressData);
       } catch (error) {
         console.error("Error loading experiences:", error);
       } finally {
@@ -120,6 +143,51 @@ const ClubPageClient = ({ club }: { club: string }) => {
     }
   };
 
+  const handleClaimMatchNFT = async (match: Match) => {
+    if (!connectedAddress) {
+      alert("Please connect your wallet first");
+      return;
+    }
+
+    // Check if match is finished
+    if (match.status !== "finished") {
+      alert("You can only claim NFTs for finished matches!");
+      return;
+    }
+
+    setClaiming(true);
+    try {
+      console.log(`Claiming match NFT for ${match.id}`);
+
+      // Generate a simple token URI (in production, this would point to IPFS or similar)
+      const tokenURI = `https://example.com/metadata/${match.id}`;
+
+      // Call the smart contract to mint match NFT
+      await writeMatchNFTAsync({
+        functionName: "mintMatchNFT",
+        args: [
+          connectedAddress,
+          match.id,
+          match.competition,
+          match.kickoff,
+          match.venue,
+          match.hometeam,
+          match.awayteam,
+          match.score || "",
+          match.status,
+          tokenURI,
+        ],
+      });
+
+      alert(`Match NFT claimed successfully for ${match.hometeam.toUpperCase()} vs ${match.awayteam.toUpperCase()}!`);
+    } catch (error) {
+      console.error("Error claiming match NFT:", error);
+      alert("Error claiming match NFT. Please try again.");
+    } finally {
+      setClaiming(false);
+    }
+  };
+
   if (clubsLoading || loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
@@ -144,6 +212,76 @@ const ClubPageClient = ({ club }: { club: string }) => {
         <h1 className="text-4xl font-bold mb-4">{currentClub.name}</h1>
         <p className="text-lg text-base-content/70">{currentClub.branding.description}</p>
       </div>
+
+      {/* Matches Section */}
+      {clubMatches.length > 0 && (
+        <div className="mb-12">
+          <h2 className="text-2xl font-bold mb-6 text-center">Matches</h2>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {clubMatches.map(match => {
+              const kickoffDate = new Date(match.kickoff);
+
+              return (
+                <div key={match.id} className="bg-base-100 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow">
+                  <div className="text-center mb-4">
+                    <div className="text-sm text-base-content/70 mb-2">
+                      {match.competition.replace("-", " ").toUpperCase()} • {kickoffDate.getDate()}{" "}
+                      {kickoffDate.toLocaleDateString("en-US", { month: "short" })} {kickoffDate.getFullYear()}
+                    </div>
+                    <div className="text-lg font-semibold mb-2">
+                      {match.hometeam.toUpperCase()} vs {match.awayteam.toUpperCase()}
+                    </div>
+                    <div className="text-sm text-base-content/70">
+                      {kickoffDate.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })} • {match.venue}
+                    </div>
+                  </div>
+
+                  <div className="text-center">
+                    {match.status === "finished" ? (
+                      <div className="text-xl font-bold text-success mb-4">{match.score}</div>
+                    ) : (
+                      <div className="text-lg font-semibold text-primary mb-4">
+                        {match.status === "scheduled" ? "Scheduled" : match.status}
+                      </div>
+                    )}
+
+                    {/* Action buttons */}
+                    <div className="flex justify-center">
+                      {match.status === "scheduled" && match.ticket ? (
+                        <a
+                          href={match.ticket}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary btn-sm"
+                        >
+                          🎫 Get Tickets
+                        </a>
+                      ) : match.status === "finished" ? (
+                        <button
+                          onClick={() => handleClaimMatchNFT(match)}
+                          disabled={claiming || !connectedAddress}
+                          className="btn btn-secondary btn-sm"
+                        >
+                          {claiming ? (
+                            <>
+                              <div className="loading loading-spinner loading-sm"></div>
+                              Claiming...
+                            </>
+                          ) : !connectedAddress ? (
+                            "🔗 Connect Wallet"
+                          ) : (
+                            "🏆 Claim Match NFT"
+                          )}
+                        </button>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {experiences.map(experience => {
@@ -206,10 +344,14 @@ const ClubPageClient = ({ club }: { club: string }) => {
                         </button>
                       </div>
                     </>
-                  ) : (
+                  ) : connectedAddress ? (
                     <Link href={`/${club}/experiences/${experience.id}`} className="btn btn-primary w-full">
-                      {connectedAddress ? "🚀 Start Experience" : "🔗 Connect Wallet"}
+                      🚀 Start Experience
                     </Link>
+                  ) : (
+                    <button disabled className="btn btn-primary w-full">
+                      🔗 Connect Wallet
+                    </button>
                   )}
                 </div>
 
