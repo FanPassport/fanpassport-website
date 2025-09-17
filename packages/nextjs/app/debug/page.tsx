@@ -8,6 +8,18 @@ export const metadata = getMetadata({
 });
 
 const Debug: NextPage = () => {
+  // Only show debug page in development
+  if (process.env.NODE_ENV === "production") {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Debug page not available</h1>
+          <p className="text-base-content/70">This page is only available in development mode.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <DebugContracts />

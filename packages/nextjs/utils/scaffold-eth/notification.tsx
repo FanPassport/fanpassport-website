@@ -79,6 +79,14 @@ export const notification = {
     return Notification({ content, status: "warning", ...options });
   },
   error: (content: React.ReactNode, options?: NotificationOptions) => {
+    // Hide deployment-related errors in production
+    if (
+      process.env.NODE_ENV === "production" &&
+      typeof content === "string" &&
+      content.includes("Target Contract is not deployed")
+    ) {
+      return;
+    }
     return Notification({ content, status: "error", ...options });
   },
   loading: (content: React.ReactNode, options?: NotificationOptions) => {
