@@ -91,7 +91,9 @@ export function useScaffoldWriteContract<TContractName extends ContractName>(
     options?: ScaffoldWriteContractOptions,
   ) => {
     if (!deployedContractData) {
-      notification.error("Target Contract is not deployed, did you forget to run `yarn deploy`?");
+      if (process.env.NODE_ENV !== "production") {
+        notification.error("Target Contract is not deployed, did you forget to run `yarn deploy`?");
+      }
       return;
     }
 
