@@ -8,8 +8,11 @@ fs_permissions = [{ access = "read-write", path = "./" }]
 [rpc_endpoints]
 default_network = "http://127.0.0.1:8545"
 
+# Ethereum networks
 mainnet = "https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}"
 sepolia = "https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
+
+# Layer 2 networks
 arbitrum = "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
 arbitrumSepolia = "https://arb-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
 optimism = "https://opt-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
@@ -26,14 +29,20 @@ scrollSepolia = "https://sepolia-rpc.scroll.io"
 scroll = "https://rpc.scroll.io"
 pgn = "https://rpc.publicgoods.network"
 pgnTestnet = "https://sepolia.publicgoods.network"
+
+# Chiliz networks
+chiliz = "https://rpc.ankr.com/chiliz"
 chilizSpicyTestnet = "https://spicy-rpc.chiliz.com/"
 
 
+# Local development
 localhost = "http://127.0.0.1:8545"
 
 [etherscan]
 polygonMumbai = { key = "${ETHERSCAN_API_KEY}" }
 sepolia = { key = "${ETHERSCAN_API_KEY}" }
+chiliz = { key = "${CHILIZ_API_KEY}", url = "https://scan.chiliz.com/" }
+chilizSpicyTestnet = { key = "${CHILIZ_API_KEY}", url = "https://testnet.chiliscan.com/" }
 localhost = { key = "dummy", url = "http://localhost:8545" }
 
 [fmt]

@@ -1,0 +1,25 @@
+{
+  "matches": [
+    {
+      "id": "20250917-psg-atalanta",
+      "status": "scheduled", 
+      "competition": "champions-league",
+      "kickoff": "2025-09-17T18:45:00Z",
+      "venue": "parcdesprinces",
+      "hometeam": "psg",
+      "awayteam": "atalanta",
+      "score": null,
+      "ticket" : "https://billetterie.psg.fr/en/catalogue/match-foot-masculin-paris-vs-atalanta"
+    },
+    {
+      "id": "20250914-psg-lens",
+      "status": "finished",
+      "competition": "ligue1",
+      "kickoff": "2025-09-14T15:15:00Z",
+      "venue": "parcdesprinces",
+      "hometeam": "psg",
+      "awayteam": "lens",
+      "score": "2-0"
+    }
+  ]
+}
