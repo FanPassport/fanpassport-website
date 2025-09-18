@@ -208,7 +208,7 @@ const MarketplacePage: NextPage = () => {
         <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
           <rect width="400" height="400" fill="#333"/>
           <text x="200" y="200" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">Experience #${experienceId}</text>
-          <text x="200" y="350" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.8">FanAI Passport</text>
+          <text x="200" y="350" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.8">Fan Passport</text>
         </svg>
       `;
       const encodedSvg = btoa(unescape(encodeURIComponent(genericSvg)));
@@ -232,7 +232,7 @@ const MarketplacePage: NextPage = () => {
         <circle cx="200" cy="150" r="60" fill="${club.colors.accent}" opacity="0.3"/>
         <text x="200" y="200" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle" font-weight="bold">${club.shortName}</text>
         <text x="200" y="230" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">Experience #${experienceId}</text>
-        <text x="200" y="350" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.8">FanAI Passport</text>
+        <text x="200" y="350" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle" opacity="0.8">Fan Passport</text>
       </svg>
     `;
 
@@ -300,7 +300,7 @@ const MarketplacePage: NextPage = () => {
           },
           {
             trait_type: "Collection",
-            value: "FanAI Passport",
+            value: "Fan Passport",
           },
         ],
       };
@@ -354,7 +354,7 @@ const MarketplacePage: NextPage = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4">NFT Marketplace</h1>
-        <p className="text-lg text-base-content/70 mb-6">Discover all FanAI Passport NFTs from the community</p>
+        <p className="text-lg text-base-content/70 mb-6">Discover all Fan Passport NFTs from the community</p>
 
         {/* Error Display */}
         {error && (

@@ -416,7 +416,7 @@ const GalleryPage: NextPage = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold mb-4">My NFT Gallery</h1>
-        <p className="text-lg text-base-content/70 mb-4">Your exclusive FanAI Passport NFT collection</p>
+        <p className="text-lg text-base-content/70 mb-4">Your exclusive Fan Passport NFT collection</p>
         <div className="flex items-center justify-center gap-2 mb-4">
           <span className="text-sm text-base-content/70">Connected:</span>
           <Address address={connectedAddress} />
@@ -574,16 +574,8 @@ const GalleryPage: NextPage = () => {
                       <span>Score:</span>
                       <span className="font-mono">{(nft as MatchNFT).score}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span>Status:</span>
-                      <span className="font-mono">{(nft as MatchNFT).status}</span>
-                    </div>
                   </>
                 )}
-                <div className="flex justify-between text-sm">
-                  <span>Owner:</span>
-                  <Address address={connectedAddress} />
-                </div>
               </div>
             </div>
           ))}
