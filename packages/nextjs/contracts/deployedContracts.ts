@@ -621,7 +621,7 @@ const deployedContracts = {
       deploymentScript: "Deploy.s.sol",
     },
     MatchNFT: {
-      address: "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      address: "0x0165878a594ca255338adfa4d48449f69242eb8f",
       abi: [
         {
           type: "constructor",
@@ -1524,13 +1524,13 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1758151215011.json",
-      deploymentScript: "Deploy.s.sol",
+      deploymentFile: "run-1758146363181.json",
+      deploymentScript: "DeployMatchNFT.s.sol",
     },
   },
   88882: {
     ExperienceNFT: {
-      address: "0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6",
+      address: "0xdbc43ba45381e02825b14322cddd15ec4b3164e6",
       abi: [
         {
           type: "constructor",
@@ -2140,11 +2140,11 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1752404269844.json",
-      deploymentScript: "Deploy.s.sol",
+      deploymentFile: "run-1758187530141.json",
+      deploymentScript: "DeployExperienceNFT.s.sol",
     },
     MatchNFT: {
-      address: "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
+      address: "0x1fa02b2d6a771842690194cf62d91bdd92bfe28d",
       abi: [
         {
           type: "constructor",
@@ -2236,14 +2236,46 @@ const deployedContracts = {
               type: "tuple",
               internalType: "struct MatchNFT.MatchData",
               components: [
-                { name: "matchId", type: "string", internalType: "string" },
-                { name: "competition", type: "string", internalType: "string" },
-                { name: "kickoff", type: "string", internalType: "string" },
-                { name: "venue", type: "string", internalType: "string" },
-                { name: "hometeam", type: "string", internalType: "string" },
-                { name: "awayteam", type: "string", internalType: "string" },
-                { name: "score", type: "string", internalType: "string" },
-                { name: "status", type: "string", internalType: "string" },
+                {
+                  name: "matchId",
+                  type: "string",
+                  internalType: "string",
+                },
+                {
+                  name: "competition",
+                  type: "string",
+                  internalType: "string",
+                },
+                {
+                  name: "kickoff",
+                  type: "string",
+                  internalType: "string",
+                },
+                {
+                  name: "venue",
+                  type: "string",
+                  internalType: "string",
+                },
+                {
+                  name: "hometeam",
+                  type: "string",
+                  internalType: "string",
+                },
+                {
+                  name: "awayteam",
+                  type: "string",
+                  internalType: "string",
+                },
+                {
+                  name: "score",
+                  type: "string",
+                  internalType: "string",
+                },
+                {
+                  name: "status",
+                  type: "string",
+                  internalType: "string",
+                },
               ],
             },
           ],
@@ -2253,45 +2285,125 @@ const deployedContracts = {
           type: "function",
           name: "hasClaimedMatch",
           inputs: [
-            { name: "", type: "address", internalType: "address" },
-            { name: "", type: "string", internalType: "string" },
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
           ],
-          outputs: [{ name: "", type: "bool", internalType: "bool" }],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "hasUserClaimedMatch",
           inputs: [
-            { name: "user", type: "address", internalType: "address" },
-            { name: "matchId", type: "string", internalType: "string" },
+            {
+              name: "user",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "matchId",
+              type: "string",
+              internalType: "string",
+            },
           ],
-          outputs: [{ name: "", type: "bool", internalType: "bool" }],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "isApprovedForAll",
           inputs: [
-            { name: "owner", type: "address", internalType: "address" },
-            { name: "operator", type: "address", internalType: "address" },
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "operator",
+              type: "address",
+              internalType: "address",
+            },
           ],
-          outputs: [{ name: "", type: "bool", internalType: "bool" }],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "matchData",
-          inputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
           outputs: [
-            { name: "matchId", type: "string", internalType: "string" },
-            { name: "competition", type: "string", internalType: "string" },
-            { name: "kickoff", type: "string", internalType: "string" },
-            { name: "venue", type: "string", internalType: "string" },
-            { name: "hometeam", type: "string", internalType: "string" },
-            { name: "awayteam", type: "string", internalType: "string" },
-            { name: "score", type: "string", internalType: "string" },
-            { name: "status", type: "string", internalType: "string" },
+            {
+              name: "matchId",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "competition",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "kickoff",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "venue",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "hometeam",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "awayteam",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "score",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "status",
+              type: "string",
+              internalType: "string",
+            },
           ],
           stateMutability: "view",
         },
@@ -2299,16 +2411,56 @@ const deployedContracts = {
           type: "function",
           name: "mintMatchNFT",
           inputs: [
-            { name: "recipient", type: "address", internalType: "address" },
-            { name: "matchId", type: "string", internalType: "string" },
-            { name: "competition", type: "string", internalType: "string" },
-            { name: "kickoff", type: "string", internalType: "string" },
-            { name: "venue", type: "string", internalType: "string" },
-            { name: "hometeam", type: "string", internalType: "string" },
-            { name: "awayteam", type: "string", internalType: "string" },
-            { name: "score", type: "string", internalType: "string" },
-            { name: "status", type: "string", internalType: "string" },
-            { name: "_tokenURI", type: "string", internalType: "string" },
+            {
+              name: "recipient",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "matchId",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "competition",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "kickoff",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "venue",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "hometeam",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "awayteam",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "score",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "status",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_tokenURI",
+              type: "string",
+              internalType: "string",
+            },
           ],
           outputs: [],
           stateMutability: "nonpayable",
@@ -2317,21 +2469,45 @@ const deployedContracts = {
           type: "function",
           name: "name",
           inputs: [],
-          outputs: [{ name: "", type: "string", internalType: "string" }],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "owner",
           inputs: [],
-          outputs: [{ name: "", type: "address", internalType: "address" }],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "ownerOf",
-          inputs: [{ name: "tokenId", type: "uint256", internalType: "uint256" }],
-          outputs: [{ name: "", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
           stateMutability: "view",
         },
         {
@@ -2345,9 +2521,21 @@ const deployedContracts = {
           type: "function",
           name: "safeTransferFrom",
           inputs: [
-            { name: "from", type: "address", internalType: "address" },
-            { name: "to", type: "address", internalType: "address" },
-            { name: "tokenId", type: "uint256", internalType: "uint256" },
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256",
+            },
           ],
           outputs: [],
           stateMutability: "nonpayable",
@@ -2356,10 +2544,26 @@ const deployedContracts = {
           type: "function",
           name: "safeTransferFrom",
           inputs: [
-            { name: "from", type: "address", internalType: "address" },
-            { name: "to", type: "address", internalType: "address" },
-            { name: "tokenId", type: "uint256", internalType: "uint256" },
-            { name: "data", type: "bytes", internalType: "bytes" },
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "data",
+              type: "bytes",
+              internalType: "bytes",
+            },
           ],
           outputs: [],
           stateMutability: "nonpayable",
@@ -2368,8 +2572,16 @@ const deployedContracts = {
           type: "function",
           name: "setApprovalForAll",
           inputs: [
-            { name: "operator", type: "address", internalType: "address" },
-            { name: "approved", type: "bool", internalType: "bool" },
+            {
+              name: "operator",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "approved",
+              type: "bool",
+              internalType: "bool",
+            },
           ],
           outputs: [],
           stateMutability: "nonpayable",
@@ -2377,62 +2589,148 @@ const deployedContracts = {
         {
           type: "function",
           name: "supportsInterface",
-          inputs: [{ name: "interfaceId", type: "bytes4", internalType: "bytes4" }],
-          outputs: [{ name: "", type: "bool", internalType: "bool" }],
+          inputs: [
+            {
+              name: "interfaceId",
+              type: "bytes4",
+              internalType: "bytes4",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "symbol",
           inputs: [],
-          outputs: [{ name: "", type: "string", internalType: "string" }],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "tokenByIndex",
-          inputs: [{ name: "index", type: "uint256", internalType: "uint256" }],
-          outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+          inputs: [
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "tokenOfOwnerByIndex",
           inputs: [
-            { name: "owner", type: "address", internalType: "address" },
-            { name: "index", type: "uint256", internalType: "uint256" },
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
           ],
-          outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "tokenURI",
-          inputs: [{ name: "tokenId", type: "uint256", internalType: "uint256" }],
-          outputs: [{ name: "", type: "string", internalType: "string" }],
+          inputs: [
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "string",
+              internalType: "string",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "tokensOfOwner",
-          inputs: [{ name: "owner", type: "address", internalType: "address" }],
-          outputs: [{ name: "", type: "uint256[]", internalType: "uint256[]" }],
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "uint256[]",
+              internalType: "uint256[]",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "totalSupply",
           inputs: [],
-          outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
           stateMutability: "view",
         },
         {
           type: "function",
           name: "transferFrom",
           inputs: [
-            { name: "from", type: "address", internalType: "address" },
-            { name: "to", type: "address", internalType: "address" },
-            { name: "tokenId", type: "uint256", internalType: "uint256" },
+            {
+              name: "from",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256",
+            },
           ],
           outputs: [],
           stateMutability: "nonpayable",
@@ -2440,7 +2738,13 @@ const deployedContracts = {
         {
           type: "function",
           name: "transferOwnership",
-          inputs: [{ name: "newOwner", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "newOwner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
           outputs: [],
           stateMutability: "nonpayable",
         },
@@ -2448,9 +2752,24 @@ const deployedContracts = {
           type: "event",
           name: "Approval",
           inputs: [
-            { name: "owner", type: "address", indexed: true, internalType: "address" },
-            { name: "approved", type: "address", indexed: true, internalType: "address" },
-            { name: "tokenId", type: "uint256", indexed: true, internalType: "uint256" },
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "approved",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              indexed: true,
+              internalType: "uint256",
+            },
           ],
           anonymous: false,
         },
@@ -2458,9 +2777,24 @@ const deployedContracts = {
           type: "event",
           name: "ApprovalForAll",
           inputs: [
-            { name: "owner", type: "address", indexed: true, internalType: "address" },
-            { name: "operator", type: "address", indexed: true, internalType: "address" },
-            { name: "approved", type: "bool", indexed: false, internalType: "bool" },
+            {
+              name: "owner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "operator",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "approved",
+              type: "bool",
+              indexed: false,
+              internalType: "bool",
+            },
           ],
           anonymous: false,
         },
@@ -2468,8 +2802,18 @@ const deployedContracts = {
           type: "event",
           name: "BatchMetadataUpdate",
           inputs: [
-            { name: "_fromTokenId", type: "uint256", indexed: false, internalType: "uint256" },
-            { name: "_toTokenId", type: "uint256", indexed: false, internalType: "uint256" },
+            {
+              name: "_fromTokenId",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+            {
+              name: "_toTokenId",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
           ],
           anonymous: false,
         },
@@ -2477,24 +2821,56 @@ const deployedContracts = {
           type: "event",
           name: "MatchNFTMinted",
           inputs: [
-            { name: "tokenId", type: "uint256", indexed: true, internalType: "uint256" },
-            { name: "recipient", type: "address", indexed: true, internalType: "address" },
-            { name: "matchId", type: "string", indexed: false, internalType: "string" },
+            {
+              name: "tokenId",
+              type: "uint256",
+              indexed: true,
+              internalType: "uint256",
+            },
+            {
+              name: "recipient",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "matchId",
+              type: "string",
+              indexed: false,
+              internalType: "string",
+            },
           ],
           anonymous: false,
         },
         {
           type: "event",
           name: "MetadataUpdate",
-          inputs: [{ name: "_tokenId", type: "uint256", indexed: false, internalType: "uint256" }],
+          inputs: [
+            {
+              name: "_tokenId",
+              type: "uint256",
+              indexed: false,
+              internalType: "uint256",
+            },
+          ],
           anonymous: false,
         },
         {
           type: "event",
           name: "OwnershipTransferred",
           inputs: [
-            { name: "previousOwner", type: "address", indexed: true, internalType: "address" },
-            { name: "newOwner", type: "address", indexed: true, internalType: "address" },
+            {
+              name: "previousOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "newOwner",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
           ],
           anonymous: false,
         },
@@ -2502,9 +2878,24 @@ const deployedContracts = {
           type: "event",
           name: "Transfer",
           inputs: [
-            { name: "from", type: "address", indexed: true, internalType: "address" },
-            { name: "to", type: "address", indexed: true, internalType: "address" },
-            { name: "tokenId", type: "uint256", indexed: true, internalType: "uint256" },
+            {
+              name: "from",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "to",
+              type: "address",
+              indexed: true,
+              internalType: "address",
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              indexed: true,
+              internalType: "uint256",
+            },
           ],
           anonymous: false,
         },
@@ -2517,71 +2908,147 @@ const deployedContracts = {
           type: "error",
           name: "ERC721IncorrectOwner",
           inputs: [
-            { name: "sender", type: "address", internalType: "address" },
-            { name: "tokenId", type: "uint256", internalType: "uint256" },
-            { name: "owner", type: "address", internalType: "address" },
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256",
+            },
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
           ],
         },
         {
           type: "error",
           name: "ERC721InsufficientApproval",
           inputs: [
-            { name: "operator", type: "address", internalType: "address" },
-            { name: "tokenId", type: "uint256", internalType: "uint256" },
+            {
+              name: "operator",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256",
+            },
           ],
         },
         {
           type: "error",
           name: "ERC721InvalidApprover",
-          inputs: [{ name: "approver", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "approver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
         {
           type: "error",
           name: "ERC721InvalidOperator",
-          inputs: [{ name: "operator", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "operator",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
         {
           type: "error",
           name: "ERC721InvalidOwner",
-          inputs: [{ name: "owner", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
         {
           type: "error",
           name: "ERC721InvalidReceiver",
-          inputs: [{ name: "receiver", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "receiver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
         {
           type: "error",
           name: "ERC721InvalidSender",
-          inputs: [{ name: "sender", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "sender",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
         {
           type: "error",
           name: "ERC721NonexistentToken",
-          inputs: [{ name: "tokenId", type: "uint256", internalType: "uint256" }],
+          inputs: [
+            {
+              name: "tokenId",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
         },
         {
           type: "error",
           name: "ERC721OutOfBoundsIndex",
           inputs: [
-            { name: "owner", type: "address", internalType: "address" },
-            { name: "index", type: "uint256", internalType: "uint256" },
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+            {
+              name: "index",
+              type: "uint256",
+              internalType: "uint256",
+            },
           ],
         },
         {
           type: "error",
           name: "OwnableInvalidOwner",
-          inputs: [{ name: "owner", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "owner",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
         {
           type: "error",
           name: "OwnableUnauthorizedAccount",
-          inputs: [{ name: "account", type: "address", internalType: "address" }],
+          inputs: [
+            {
+              name: "account",
+              type: "address",
+              internalType: "address",
+            },
+          ],
         },
       ],
       inheritedFunctions: {},
-      deploymentFile: "run-1752404269844.json",
-      deploymentScript: "Deploy.s.sol",
+      deploymentFile: "run-1758187397669.json",
+      deploymentScript: "DeployMatchNFT.s.sol",
     },
   },
 } as const;

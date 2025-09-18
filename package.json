@@ -43,6 +43,7 @@
     "next:serve": "yarn workspace @se-2/nextjs serve",
     "precommit": "lint-staged",
     "start": "yarn workspace @se-2/nextjs dev",
+    "dev": "yarn workspace @se-2/nextjs dev",
     "test": "yarn foundry:test",
     "vercel": "yarn workspace @se-2/nextjs vercel",
     "vercel:login": "yarn workspace @se-2/nextjs vercel:login",
@@ -56,5 +57,9 @@
   "packageManager": "yarn@3.2.3",
   "engines": {
     "node": ">=20.18.3"
+  },
+  "resolutions": {
+    "elliptic": "^6.6.1",
+    "parse-duration": "^2.1.3"
   }
 }
