@@ -57,6 +57,7 @@ const ClubPageClient = ({ club }: { club: string }) => {
   const [userProgress, setUserProgress] = useState<Record<number, UserProgress>>({});
   const [loading, setLoading] = useState(true);
   const [matches, setMatches] = useState<Match[]>([]);
+  const [claimedMatches, setClaimedMatches] = useState<Set<string>>(new Set());
   const { clubs, loading: clubsLoading } = useClub();
 
   // Scaffold-ETH hook for writing to contract
@@ -65,7 +66,7 @@ const ClubPageClient = ({ club }: { club: string }) => {
   });
 
   // Hook for MatchNFT contract (we'll add this to external contracts)
-  const { writeContractAsync: writeMatchNFTAsync } = useScaffoldWriteContract({
+  const { writeContractAsync: writeMatchNFTAsync, isMining: isMatchNFTMining } = useScaffoldWriteContract({
     contractName: "MatchNFT",
   });
 
@@ -155,34 +156,77 @@ const ClubPageClient = ({ club }: { club: string }) => {
       return;
     }
 
+    // Additional validation
+    if (!match.id || !match.competition || !match.hometeam || !match.awayteam) {
+      alert("Invalid match data. Cannot claim NFT.");
+      return;
+    }
+
+    // Check if contract function is available
+    if (!writeMatchNFTAsync) {
+      alert("MatchNFT contract is not available. Please check your network connection.");
+      return;
+    }
+
     setClaiming(true);
     try {
-      console.log(`Claiming match NFT for ${match.id}`);
+      console.log(`Claiming match NFT for ${match.id}`, match);
 
       // Generate a simple token URI (in production, this would point to IPFS or similar)
       const tokenURI = `https://example.com/metadata/${match.id}`;
 
+      // Ensure all string parameters are properly formatted
+      const args: any[] = [
+        connectedAddress,
+        match.id,
+        match.competition,
+        match.kickoff,
+        match.venue,
+        match.hometeam,
+        match.awayteam,
+        match.score || "",
+        match.status,
+        tokenURI,
+      ];
+
+      console.log("Contract args:", args);
+
       // Call the smart contract to mint match NFT
       await writeMatchNFTAsync({
         functionName: "mintMatchNFT",
-        args: [
-          connectedAddress,
-          match.id,
-          match.competition,
-          match.kickoff,
-          match.venue,
-          match.hometeam,
-          match.awayteam,
-          match.score || "",
-          match.status,
-          tokenURI,
-        ],
+        args: args as any,
       });
 
       alert(`Match NFT claimed successfully for ${match.hometeam.toUpperCase()} vs ${match.awayteam.toUpperCase()}!`);
-    } catch (error) {
+
+      // Add this match to the claimed set
+      setClaimedMatches(prev => new Set(prev).add(match.id));
+    } catch (error: any) {
       console.error("Error claiming match NFT:", error);
-      alert("Error claiming match NFT. Please try again.");
+
+      // Provide more specific error messages
+      let errorMessage = "Error claiming match NFT. Please try again.";
+
+      if (error?.message) {
+        if (error.message.includes("User rejected")) {
+          errorMessage = "Transaction was rejected by user.";
+        } else if (error.message.includes("insufficient funds")) {
+          errorMessage = "Insufficient funds to complete the transaction.";
+        } else if (error.message.includes("Match already claimed by this user")) {
+          errorMessage = "You have already claimed the NFT for this match.";
+          // Add this match to the claimed set so the UI updates
+          setClaimedMatches(prev => new Set(prev).add(match.id));
+        } else if (error.message.includes("execution reverted")) {
+          errorMessage =
+            "Transaction failed. The match NFT may have already been claimed or the match is not eligible.";
+        } else if (error.message.includes("network")) {
+          errorMessage = "Network error. Please check your connection and try again.";
+        } else {
+          errorMessage = `Transaction failed: ${error.message}`;
+        }
+      }
+
+      alert(errorMessage);
     } finally {
       setClaiming(false);
     }
@@ -257,22 +301,28 @@ const ClubPageClient = ({ club }: { club: string }) => {
                           🎫 Get Tickets
                         </a>
                       ) : match.status === "finished" ? (
-                        <button
-                          onClick={() => handleClaimMatchNFT(match)}
-                          disabled={claiming || !connectedAddress}
-                          className="btn btn-secondary btn-sm"
-                        >
-                          {claiming ? (
-                            <>
-                              <div className="loading loading-spinner loading-sm"></div>
-                              Claiming...
-                            </>
-                          ) : !connectedAddress ? (
-                            "🔗 Connect Wallet"
-                          ) : (
-                            "🏆 Claim Match NFT"
-                          )}
-                        </button>
+                        claimedMatches.has(match.id) ? (
+                          <button disabled className="btn btn-success btn-sm">
+                            ✅ NFT Claimed
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleClaimMatchNFT(match)}
+                            disabled={claiming || isMatchNFTMining || !connectedAddress}
+                            className="btn btn-secondary btn-sm"
+                          >
+                            {claiming || isMatchNFTMining ? (
+                              <>
+                                <div className="loading loading-spinner loading-sm"></div>
+                                {isMatchNFTMining ? "Mining..." : "Claiming..."}
+                              </>
+                            ) : !connectedAddress ? (
+                              "🔗 Connect Wallet"
+                            ) : (
+                              "🏆 Claim Match NFT"
+                            )}
+                          </button>
+                        )
                       ) : null}
                     </div>
                   </div>

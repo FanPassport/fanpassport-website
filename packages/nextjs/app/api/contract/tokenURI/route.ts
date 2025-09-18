@@ -9,7 +9,7 @@ const publicClient = createPublicClient({
   transport: http(),
 });
 
-// POST /api/contract/ownerOf - Get the owner of a specific NFT from the blockchain
+// POST /api/contract/tokenURI - Get the tokenURI for a specific NFT
 export async function POST(request: NextRequest) {
   let body: any = undefined;
   try {
@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Token ID is required" }, { status: 400 });
     }
 
-    console.log(`🔍 Getting owner for token ID: ${tokenId} from contract: ${contractName}`);
+    console.log(`🔍 Getting tokenURI for token ID: ${tokenId} from contract: ${contractName}`);
 
     // Get the contract address and ABI based on contractName
     const resolvedChainId: number = Number(chainId ?? process.env.NEXT_PUBLIC_CHAIN_ID ?? localhost.id);
@@ -41,58 +41,32 @@ export async function POST(request: NextRequest) {
 
     console.log(`📋 Contract ${contractName} address (chain ${resolvedChainId}): ${contractAddress}`);
 
-    // Call the ownerOf function on the smart contract
-    const owner = await publicClient.readContract({
+    // Call the tokenURI function on the smart contract
+    const tokenURI = await publicClient.readContract({
       address: contractAddress as `0x${string}`,
       abi: contractAbi,
-      functionName: "ownerOf",
+      functionName: "tokenURI",
       args: [BigInt(tokenId)],
     });
 
-    console.log(`✅ Owner for token ${tokenId}: ${owner}`);
+    console.log(`✅ TokenURI for token ${tokenId}: ${tokenURI}`);
 
     return NextResponse.json({
       tokenId: parseInt(tokenId),
-      owner: owner as string,
+      tokenURI: tokenURI as string,
     });
-  } catch (error) {
-    console.error(`❌ Error getting NFT owner from contract for token ${body?.tokenId ?? "unknown"}:`, error);
+  } catch (error: any) {
+    console.error("❌ Error getting tokenURI:", error);
 
-    // Provide more specific error messages
-
-    if (error instanceof Error) {
-      // Handle both OpenZeppelin and custom error names/messages for non-existent token
-      const message = error.message || "";
-      const errorName = (error as any).data?.errorName || "";
-      if (
-        message.includes("ERC721: owner query for nonexistent token") ||
-        message.includes("ERC721NonexistentToken") ||
-        errorName === "ERC721NonexistentToken"
-      ) {
-        return NextResponse.json(
-          {
-            error: "Token does not exist",
-            details: "The specified token ID has not been minted yet",
-          },
-          { status: 404 },
-        );
-      }
-
-      if (message.includes("execution reverted")) {
-        return NextResponse.json(
-          {
-            error: "Contract execution failed",
-            details: "The smart contract call failed. The token might not exist or the contract might be paused.",
-          },
-          { status: 500 },
-        );
-      }
+    // Handle specific contract errors
+    if (error?.message?.includes("Token does not exist") || error?.shortMessage?.includes("0x7e273289")) {
+      return NextResponse.json({ error: "Token does not exist" }, { status: 404 });
     }
 
     return NextResponse.json(
       {
-        error: "Failed to get NFT owner from contract",
-        details: "An unexpected error occurred while reading from the blockchain",
+        error: "Failed to get tokenURI",
+        details: error?.message || "Unknown error",
       },
       { status: 500 },
     );
