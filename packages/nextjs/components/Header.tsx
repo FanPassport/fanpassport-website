@@ -98,7 +98,7 @@ export const Header = () => {
         } as React.CSSProperties
       }
     >
-      <div className="navbar-start w-auto lg:w-1/2">
+      <div className="navbar-start w-auto lg:w-1/2 flex items-center">
         <details className="dropdown" ref={burgerMenuRef}>
           <summary className="ml-1 btn btn-ghost lg:hidden hover:bg-transparent">
             <Bars3Icon className="h-1/2" />
@@ -127,17 +127,18 @@ export const Header = () => {
             />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight">FAN Passport</span>
-            <span className="text-xs">Fan exclusive experiences for you</span>
+            <span className="font-bold leading-tight">FAN PASSPORT</span>
+            <span className="text-xs">Stadiums stamps - on Chiliz Spicy testnet</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
           <HeaderMenuLinks />
         </ul>
+        <div className="ml-3 flex items-center">
+          <ClubSelector />
+        </div>
       </div>
-      <div className="navbar-center grow mr-4 flex items-center gap-2">
-        <ClubSelector />
-      </div>
+
       <div className="navbar-end grow mr-4 flex items-center gap-2">
         <RainbowKitCustomConnectButton />
       </div>
