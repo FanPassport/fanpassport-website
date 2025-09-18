@@ -1013,7 +1013,7 @@ const externalContracts = {
   },
   88882: {
     MatchNFT: {
-      address: "0x0000000000000000000000000000000000000000", // Replace with actual deployed address on Chiliz Spicy Testnet
+      address: "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
       abi: [
         {
           inputs: [],
@@ -1379,7 +1379,7 @@ const externalContracts = {
       ],
     },
     ExperienceNFT: {
-      address: "0x0000000000000000000000000000000000000000", // Replace with actual deployed address on Chiliz Spicy Testnet
+      address: "0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6",
       abi: [
         {
           type: "constructor",
