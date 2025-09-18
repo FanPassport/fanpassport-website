@@ -17,9 +17,14 @@ export async function GET(request: Request, { params }: { params: Promise<{ toke
 
     console.log(`🔍 Getting metadata for token ID: ${tokenIdNumber}`);
 
-    // Get the contract address and ABI
-    const contractAddress = deployedContracts[31337].ExperienceNFT.address;
-    const contractAbi = deployedContracts[31337].ExperienceNFT.abi;
+    // Get the contract address and ABI (check if ExperienceNFT exists on localhost)
+    const experienceContract = (deployedContracts as any)[31337]?.ExperienceNFT;
+    if (!experienceContract) {
+      return NextResponse.json({ error: "ExperienceNFT contract not found on localhost" }, { status: 404 });
+    }
+
+    const contractAddress = experienceContract.address;
+    const contractAbi = experienceContract.abi;
 
     console.log(`📋 Contract address: ${contractAddress}`);
 
@@ -34,7 +39,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ toke
     console.log(`📄 Token URI: ${tokenURI}`);
 
     // The tokenURI is base64 encoded JSON, decode it
-    const base64Data = tokenURI.replace("data:application/json;base64,", "");
+    const base64Data = (tokenURI as string).replace("data:application/json;base64,", "");
     const jsonString = Buffer.from(base64Data, "base64").toString("utf-8");
     const metadata = JSON.parse(jsonString);
 
