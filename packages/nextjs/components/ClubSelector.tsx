@@ -57,9 +57,9 @@ export const ClubSelector = () => {
   if (!currentClub) {
     return (
       <div className="dropdown dropdown-end" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-        <div tabIndex={0} role="button" className="btn btn-ghost btn-sm gap-2">
+        <div tabIndex={0} role="button" className="btn btn-ghost btn-sm gap-2 whitespace-nowrap">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-medium">Choose a club</span>
+            <span className="text-sm font-medium whitespace-nowrap">Choose a club</span>
           </div>
           <ChevronDownIcon className="h-4 w-4" />
         </div>
@@ -97,7 +97,7 @@ export const ClubSelector = () => {
 
   return (
     <div className="dropdown dropdown-end" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-sm gap-2">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-sm gap-2 whitespace-nowrap">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 relative">
             <Image
@@ -108,7 +108,7 @@ export const ClubSelector = () => {
               className="w-full h-full object-contain"
             />
           </div>
-          <span className="text-sm font-medium">{currentClub.shortName}</span>
+          <span className="text-sm font-medium whitespace-nowrap">{currentClub.shortName}</span>
         </div>
         <ChevronDownIcon className="h-4 w-4" />
       </div>
