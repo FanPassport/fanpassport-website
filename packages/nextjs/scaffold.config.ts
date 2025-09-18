@@ -17,29 +17,6 @@ const scaffoldConfig = {
   // The networks on which your DApp is live
   targetNetworks: [
     {
-      id: 31337,
-      name: "Localhost 8545",
-      nativeCurrency: {
-        decimals: 18,
-        name: "ETH",
-        symbol: "ETH",
-      },
-      rpcUrls: {
-        default: {
-          http: ["http://127.0.0.1:8545"],
-        },
-        public: {
-          http: ["http://127.0.0.1:8545"],
-        },
-      },
-      blockExplorers: {
-        default: {
-          name: "Local Explorer",
-          url: "http://localhost:3000/blockexplorer",
-        },
-      },
-    } as chains.Chain,
-    {
       id: 88882,
       name: "Chiliz Spicy Testnet",
       nativeCurrency: {
@@ -59,6 +36,29 @@ const scaffoldConfig = {
         default: {
           name: "Chiliz Explorer",
           url: "https://scan.chiliz.com",
+        },
+      },
+    } as chains.Chain,
+    {
+      id: 31337,
+      name: "Localhost 8545",
+      nativeCurrency: {
+        decimals: 18,
+        name: "ETH",
+        symbol: "ETH",
+      },
+      rpcUrls: {
+        default: {
+          http: ["http://127.0.0.1:8545"],
+        },
+        public: {
+          http: ["http://127.0.0.1:8545"],
+        },
+      },
+      blockExplorers: {
+        default: {
+          name: "Local Explorer",
+          url: "http://localhost:3000/blockexplorer",
         },
       },
     } as chains.Chain,

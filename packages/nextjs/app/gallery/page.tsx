@@ -5,7 +5,8 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
-import { useDeployedContractInfo, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useDeployedContractInfo, useScaffoldReadContract, useTargetNetwork } from "~~/hooks/scaffold-eth";
+import { contracts } from "~~/utils/scaffold-eth/contract";
 
 interface ExperienceNFT {
   type: "experience";
@@ -52,16 +53,46 @@ const GalleryPage: NextPage = () => {
   };
   const [currentChainId, setCurrentChainId] = useState<number | undefined>(undefined);
   const [debugBalanceResult, setDebugBalanceResult] = useState<any>(null);
+  // Get the current chain from the account hook and ensure target network is synced
+  const { chain } = useAccount();
+  const { targetNetwork } = useTargetNetwork();
+
+  // Improved fallback logic: use target network, then env var, then testnet as last resort
+  const getFallbackChainId = () => {
+    // First priority: target network from scaffold config
+    if (targetNetwork?.id) {
+      return targetNetwork.id;
+    }
+    // Second priority: environment variable
+    const envChainId = process.env.NEXT_PUBLIC_CHAIN_ID;
+    if (envChainId) {
+      const parsed = parseInt(envChainId, 10);
+      if (!isNaN(parsed)) {
+        return parsed;
+      }
+    }
+    // Last resort: Chiliz testnet (current behavior)
+    return 88882;
+  };
+
+  const fallbackChainId = getFallbackChainId();
+
   const {
     data: clientMatchBalance,
     isError: clientMatchError,
     isLoading: clientMatchLoading,
     error: clientMatchErrorObj,
-  } = useScaffoldReadContract({} as any);
+  } = useScaffoldReadContract({
+    contractName: "MatchNFT" as const,
+    functionName: "balanceOf" as const,
+    args: connectedAddress ? [connectedAddress as `0x${string}`] : undefined,
+    enabled: !!connectedAddress,
+    chainId: chain?.id || (fallbackChainId as any),
+  } as any);
 
   const { data: deployedMatchContract } = useDeployedContractInfo({
     contractName: "MatchNFT" as any,
-    chainId: 31337 as any,
+    chainId: chain?.id || (fallbackChainId as any),
   });
 
   // ExperienceNFT
@@ -70,10 +101,12 @@ const GalleryPage: NextPage = () => {
     functionName: "balanceOf" as const,
     args: connectedAddress ? [connectedAddress as `0x${string}`] : undefined,
     enabled: !!connectedAddress,
+    chainId: chain?.id || (fallbackChainId as any),
   } as any);
   const { data: expTotalSupply } = useScaffoldReadContract({
     contractName: "ExperienceNFT" as const,
     functionName: "totalSupply" as const,
+    chainId: chain?.id || (fallbackChainId as any),
   } as any);
 
   // MatchNFT balance for connected user
@@ -82,10 +115,12 @@ const GalleryPage: NextPage = () => {
     functionName: "balanceOf" as const,
     args: connectedAddress ? [connectedAddress as `0x${string}`] : undefined,
     enabled: !!connectedAddress,
+    chainId: chain?.id || (fallbackChainId as any),
   } as any);
   const { data: matchTotalSupply } = useScaffoldReadContract({
     contractName: "MatchNFT" as const,
     functionName: "totalSupply" as const,
+    chainId: chain?.id || (fallbackChainId as any),
   } as any);
 
   // Load both ExperienceNFTs and MatchNFTs
@@ -409,7 +444,7 @@ const GalleryPage: NextPage = () => {
                     body: JSON.stringify({
                       owner: connectedAddress,
                       contractName: "MatchNFT",
-                      chainId: currentChainId ?? 31337,
+                      chainId: currentChainId ?? fallbackChainId,
                     }),
                   });
                   const data = await resp.json();
@@ -459,6 +494,19 @@ const GalleryPage: NextPage = () => {
                 <pre className="text-xs mt-2 whitespace-pre-wrap">{JSON.stringify(clientMatchErrorObj, null, 2)}</pre>
               )}
               <div>deployedMatchContract: {deployedMatchContract ? deployedMatchContract.address : "undefined"}</div>
+              <div>Current chain?.id: {chain?.id}</div>
+              <div>Target network ID: {targetNetwork.id}</div>
+              <div>Fallback chain ID: {fallbackChainId}</div>
+              <div>Connected address: {connectedAddress}</div>
+              <div>Hook enabled: {!!connectedAddress ? "true" : "false"}</div>
+              <div>Contracts object exists: {contracts ? "Yes" : "No"}</div>
+              <div>
+                Chain {fallbackChainId} in contracts: {contracts && (contracts as any)[fallbackChainId] ? "Yes" : "No"}
+              </div>
+              <div>
+                MatchNFT in chain {fallbackChainId}:{" "}
+                {contracts && (contracts as any)[fallbackChainId]?.MatchNFT ? "Yes" : "No"}
+              </div>
               {deployedMatchContract && (
                 <pre className="text-xs mt-2 whitespace-pre-wrap">{JSON.stringify(deployedMatchContract, null, 2)}</pre>
               )}
