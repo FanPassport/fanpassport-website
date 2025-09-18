@@ -78,7 +78,7 @@ contract ExperienceNFT is ERC721, Ownable {
             '<text x="200" y="130" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="white">EXP</text>',
             '<text x="200" y="200" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="', textColor, '">Experience #', experienceId.toString(), '</text>',
             '<text x="200" y="220" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="', textColor, '">Token #', tokenId.toString(), '</text>',
-            '<text x="200" y="350" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="', textColor, '">FanAI Passport</text>',
+            '<text x="200" y="350" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="', textColor, '">Fan Passport</text>',
             '</svg>'
         ));
     }
