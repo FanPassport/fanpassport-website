@@ -14,17 +14,33 @@ export async function POST() {
   try {
     console.log("🔄 Getting all NFTs from contract...");
 
-    // Get the contract address and ABI
-    const contractAddress = deployedContracts[31337].ExperienceNFT.address;
-    const contractAbi = deployedContracts[31337].ExperienceNFT.abi;
+    // Resolve chainId (prefer env then localhost)
+    const resolvedChainId: number = Number(process.env.NEXT_PUBLIC_CHAIN_ID ?? localhost.id);
+    console.log(
+      `🔎 Resolved chainId for getAllNFTs: ${resolvedChainId} (NEXT_PUBLIC_CHAIN_ID=${process.env.NEXT_PUBLIC_CHAIN_ID ?? "undefined"})`,
+    );
 
-    console.log(`📋 Contract address: ${contractAddress}`);
+    // Get the contract address and ABI for the resolved chain
+    const contracts = (deployedContracts as any)[resolvedChainId];
+    if (!contracts || !contracts.ExperienceNFT) {
+      console.error(`❌ No deployed ExperienceNFT contract found for chain ${resolvedChainId}`);
+      return NextResponse.json(
+        { error: `No deployed ExperienceNFT contract found for chain ${resolvedChainId}` },
+        { status: 500 },
+      );
+    }
+
+    const contractAddress = contracts.ExperienceNFT.address;
+    const contractAbi = contracts.ExperienceNFT.abi;
+
+    console.log(`📋 Contract address (chain ${resolvedChainId}): ${contractAddress}`);
 
     // Get total supply first
     const totalSupply = await publicClient.readContract({
       address: contractAddress as `0x${string}`,
       abi: contractAbi,
       functionName: "totalSupply",
+      args: [],
     });
 
     console.log(`📊 Total supply: ${totalSupply}`);

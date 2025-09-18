@@ -3,9 +3,10 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MatchNFT is ERC721, ERC721URIStorage, Ownable {
+contract MatchNFT is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable {
     uint256 private _tokenIdCounter;
 
     struct MatchData {
@@ -53,7 +54,7 @@ contract MatchNFT is ERC721, ERC721URIStorage, Ownable {
         string memory score,
         string memory status,
         string memory _tokenURI
-    ) external onlyOwner {
+    ) external {
         // Check if user has already claimed this match
         require(!hasClaimedMatch[recipient][matchId], "Match already claimed by this user");
 
@@ -112,8 +113,34 @@ contract MatchNFT is ERC721, ERC721URIStorage, Ownable {
     /**
      * @dev Override supportsInterface
      */
-    function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721URIStorage) returns (bool) {
+    function supportsInterface(bytes4 interfaceId) public view override(ERC721, ERC721URIStorage, ERC721Enumerable) returns (bool) {
         return super.supportsInterface(interfaceId);
+    }
+
+    /**
+     * @dev Override _update to handle multiple inheritance
+     */
+    function _update(address to, uint256 tokenId, address auth) internal override(ERC721, ERC721Enumerable) returns (address) {
+        return super._update(to, tokenId, auth);
+    }
+
+    /**
+     * @dev Override _increaseBalance to handle multiple inheritance
+     */
+    function _increaseBalance(address account, uint128 value) internal override(ERC721, ERC721Enumerable) {
+        super._increaseBalance(account, value);
+    }
+
+    /**
+     * @dev Get all token IDs owned by an address
+     */
+    function tokensOfOwner(address owner) public view returns (uint256[] memory) {
+        uint256 tokenCount = balanceOf(owner);
+        uint256[] memory tokenIds = new uint256[](tokenCount);
+        for (uint256 i = 0; i < tokenCount; i++) {
+            tokenIds[i] = tokenOfOwnerByIndex(owner, i);
+        }
+        return tokenIds;
     }
 
     /**

@@ -4,7 +4,7 @@ const RPC_URL = "http://127.0.0.1:8545";
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "YOUR_PRIVATE_KEY_HERE"; // Anvil account 0
 const USER_ADDRESS = "0xFd70b60411692F1a4c0d57046ab64b81D3DC3a83";
 const FAN_AI_PASSPORT = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
-const FAN_AI_EXPERIENCE = "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9";
+const FAN_AI_EXPERIENCE = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
 const PASSPORT_ABI = [
   "function ownerOf(uint256 tokenId) view returns (address)",
