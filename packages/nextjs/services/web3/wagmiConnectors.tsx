@@ -14,6 +14,19 @@ import scaffoldConfig from "~~/scaffold.config";
 const { onlyLocalBurnerWallet, targetNetworks } = scaffoldConfig;
 
 const wallets = [
+  // Socios shortcut: uses WalletConnect under the hood but shows as "Socios"
+  // This helps users who don't realize Socios uses WalletConnect.
+  (options: any) => {
+    const wc = walletConnectWallet(options as any);
+    return {
+      ...wc,
+      id: "socios",
+      name: "Socios",
+      // Use attached Socios image so brand is recognizable.
+      // Use PNG for maximum compatibility and fall back to ICO if needed.
+      iconUrl: "/socios-wallet.png",
+    } as any;
+  },
   metaMaskWallet,
   walletConnectWallet,
   ledgerWallet,
