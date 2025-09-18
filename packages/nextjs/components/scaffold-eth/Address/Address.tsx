@@ -113,27 +113,7 @@ export const Address = ({
   const blockieSize = showSkeleton && !onlyEnsOrAddress ? getNextSize(blockieSizeMap, addressSize, 4) : addressSize;
 
   if (!checkSumAddress) {
-    return (
-      <div className="flex items-center">
-        <div
-          className="shrink-0 skeleton rounded-full"
-          style={{
-            width: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
-            height: (blockieSizeMap[blockieSize] * 24) / blockieSizeMap["base"],
-          }}
-        ></div>
-        <div className="flex flex-col space-y-1">
-          {!onlyEnsOrAddress && (
-            <div className={`ml-1.5 skeleton rounded-lg font-bold ${textSizeMap[ensSize]}`}>
-              <span className="invisible">0x1234...56789</span>
-            </div>
-          )}
-          <div className={`ml-1.5 skeleton rounded-lg ${textSizeMap[addressSize]}`}>
-            <span className="invisible">0x1234...56789</span>
-          </div>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   if (!isAddress(checkSumAddress)) {
