@@ -7,6 +7,12 @@ import "../contracts/MatchNFT.sol";
 contract DeployMatchNFT is Script {
     function run() external {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        // Try to read as string if hex, fallback to uint if needed
+        try vm.envUint("PRIVATE_KEY") returns (uint256 pk) {
+            deployerPrivateKey = pk;
+        } catch {
+            deployerPrivateKey = uint256(vm.envBytes32("PRIVATE_KEY"));
+        }
         vm.startBroadcast(deployerPrivateKey);
 
         MatchNFT matchNFT = new MatchNFT();
