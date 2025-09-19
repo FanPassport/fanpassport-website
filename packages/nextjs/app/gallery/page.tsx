@@ -415,8 +415,8 @@ const GalleryPage: NextPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold mb-4">My NFT Gallery</h1>
-        <p className="text-lg text-base-content/70 mb-4">Your exclusive Fan Passport NFT collection</p>
+        <h1 className="text-4xl font-bold mb-4">My Gallery</h1>
+        <p className="text-lg text-base-content/70 mb-4">Your collectible Fan Passport NFT</p>
         <div className="flex items-center justify-center gap-2 mb-4">
           <span className="text-sm text-base-content/70">Connected:</span>
           <Address address={connectedAddress} />
@@ -424,7 +424,7 @@ const GalleryPage: NextPage = () => {
         </div>
         <div className="text-sm text-base-content/70 space-y-1">
           <div>
-            ExperienceNFTs: {expUserBalance ? Number(expUserBalance) : 0} | MatchNFTs (enumerated):{" "}
+            Experience NFTs: {expUserBalance ? Number(expUserBalance) : 0} | Match NFTs :{" "}
             {userNFTs.filter(nft => nft.type === "match").length}
           </div>
           <div className="text-xs opacity-70">
@@ -432,7 +432,7 @@ const GalleryPage: NextPage = () => {
           </div>
           <div>
             <button className="btn btn-xs btn-outline" disabled={loading} onClick={() => setReloadNonce(n => n + 1)}>
-              {loading ? "Loading..." : "Reload NFTs"}
+              {loading ? "Loading..." : "Rescan NFTs"}
             </button>
             <button
               className="btn btn-xs btn-outline ml-2"
