@@ -12,6 +12,7 @@ const Home: NextPage = () => {
   const { address: connectedAddress, isConnected } = useAccount();
   const { clubs, loading, changeClub } = useClub();
   const router = useRouter();
+  const enabledClubs = new Set(["psg", "monaco"]);
 
   return (
     <>
@@ -45,8 +46,7 @@ const Home: NextPage = () => {
         <div className="px-5 max-w-6xl w-full mx-auto mt-8">
           {loading ? (
             <div className="text-center py-16">
-              <div className="loading loading-spinner loading-lg mb-4"></div>
-              <h1 className="text-4xl font-bold">Loading...</h1>
+              <div className="loading loading-spinner loading-lg mb-4"></div>{" "}
               <p className="text-lg mt-4">Loading clubs...</p>
             </div>
           ) : (
@@ -64,29 +64,42 @@ const Home: NextPage = () => {
               </div>
 
               <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8">
-                {clubs.map(club => (
-                  <button
-                    key={club.id}
-                    onClick={async () => {
-                      await changeClub(club.id);
-                      router.push(`/${club.id}`);
-                    }}
-                    className="group bg-base-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 text-left cursor-pointer border border-base-200 hover:border-primary"
-                  >
-                    <div className="text-center">
-                      <div className="w-32 h-32 mx-auto mb-6 relative">
-                        <Image
-                          src={club.logo}
-                          alt={`${club.name} logo`}
-                          width={128}
-                          height={128}
-                          className="w-full h-full object-contain rounded-full border border-base-200"
-                        />
+                {clubs.map(club => {
+                  const isAvailable = enabledClubs.has(club.id);
+                  return (
+                    <button
+                      key={club.id}
+                      onClick={async () => {
+                        if (!isAvailable) return;
+                        await changeClub(club.id);
+                        router.push(`/${club.id}`);
+                      }}
+                      disabled={!isAvailable}
+                      aria-disabled={!isAvailable}
+                      className={`group bg-base-100 rounded-2xl p-8 shadow-lg transition-all duration-300 text-left border border-base-200 ${
+                        isAvailable
+                          ? "hover:shadow-xl hover:scale-105 cursor-pointer hover:border-primary"
+                          : "opacity-50 cursor-not-allowed pointer-events-none"
+                      }`}
+                    >
+                      <div className="text-center">
+                        <div className="w-32 h-32 mx-auto mb-6 relative">
+                          <Image
+                            src={club.logo}
+                            alt={`${club.name} logo`}
+                            width={128}
+                            height={128}
+                            className={`w-full h-full object-contain rounded-full border border-base-200 ${
+                              isAvailable ? "" : "grayscale"
+                            }`}
+                          />
+                        </div>
+                        <h3 className="text-xl font-bold mb-2">{club.name}</h3>
+                        {!isAvailable && <p className="text-sm text-base-content/60 mt-1">Coming soon</p>}
                       </div>
-                      <h3 className="text-xl font-bold mb-2">{club.name}</h3>
-                    </div>
-                  </button>
-                ))}
+                    </button>
+                  );
+                })}
               </div>
 
               {/* Info Section */}
