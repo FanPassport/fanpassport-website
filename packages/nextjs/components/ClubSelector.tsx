@@ -33,6 +33,8 @@ export const ClubSelector = () => {
     setIsOpen(false);
   };
 
+  const enabledClubs = new Set(["psg", "monaco"]);
+
   // Show loading state until mounted
   if (!mounted) {
     return (
@@ -70,24 +72,31 @@ export const ClubSelector = () => {
         >
           {clubs.map(club => (
             <li key={club.id}>
-              <button
-                className="flex items-center gap-3 p-3 hover:bg-base-200 rounded-lg"
-                onClick={() => handleClubChange(club.id)}
-              >
-                <div className="w-4 h-4 relative">
-                  <Image
-                    src={club.logo}
-                    alt={`${club.name} logo`}
-                    width={16}
-                    height={16}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div className="flex flex-col items-start">
-                  <span className="font-medium text-sm">{club.name}</span>
-                  <span className="text-xs text-base-content/70">{club.shortName}</span>
-                </div>
-              </button>
+              {(() => {
+                const isAvailable = enabledClubs.has(club.id);
+                return (
+                  <button
+                    className={`flex items-center gap-3 p-3 rounded-lg ${isAvailable ? "hover:bg-base-200" : "opacity-50 cursor-not-allowed pointer-events-none"}`}
+                    onClick={() => isAvailable && handleClubChange(club.id)}
+                    disabled={!isAvailable}
+                    aria-disabled={!isAvailable}
+                  >
+                    <div className={`w-4 h-4 relative ${isAvailable ? "" : "grayscale"}`}>
+                      <Image
+                        src={club.logo}
+                        alt={`${club.name} logo`}
+                        width={16}
+                        height={16}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="flex flex-col items-start">
+                      <span className="font-medium text-sm">{club.name}</span>
+                      <span className="text-xs text-base-content/70">{club.shortName}</span>
+                    </div>
+                  </button>
+                );
+              })()}
             </li>
           ))}
         </ul>
@@ -117,30 +126,35 @@ export const ClubSelector = () => {
         tabIndex={0}
         className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 ${isOpen ? "dropdown-open" : ""}`}
       >
-        {clubs.map(club => (
-          <li key={club.id}>
-            <button
-              className={`flex items-center gap-3 p-3 hover:bg-base-200 rounded-lg ${
-                currentClub.id === club.id ? "bg-base-200" : ""
-              }`}
-              onClick={() => handleClubChange(club.id)}
-            >
-              <div className="w-4 h-4 relative">
-                <Image
-                  src={club.logo}
-                  alt={`${club.name} logo`}
-                  width={16}
-                  height={16}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div className="flex flex-col items-start">
-                <span className="font-medium text-sm">{club.name}</span>
-                <span className="text-xs text-base-content/70">{club.shortName}</span>
-              </div>
-            </button>
-          </li>
-        ))}
+        {clubs.map(club => {
+          const isAvailable = enabledClubs.has(club.id);
+          return (
+            <li key={club.id}>
+              <button
+                className={`flex items-center gap-3 p-3 rounded-lg ${
+                  currentClub.id === club.id ? "bg-base-200" : ""
+                } ${isAvailable ? "hover:bg-base-200" : "opacity-50 cursor-not-allowed pointer-events-none"}`}
+                onClick={() => isAvailable && handleClubChange(club.id)}
+                disabled={!isAvailable}
+                aria-disabled={!isAvailable}
+              >
+                <div className={`w-4 h-4 relative ${isAvailable ? "" : "grayscale"}`}>
+                  <Image
+                    src={club.logo}
+                    alt={`${club.name} logo`}
+                    width={16}
+                    height={16}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex flex-col items-start">
+                  <span className="font-medium text-sm">{club.name}</span>
+                  <span className="text-xs text-base-content/70">{club.shortName}</span>
+                </div>
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
