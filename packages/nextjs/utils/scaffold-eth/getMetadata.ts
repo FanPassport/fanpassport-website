@@ -8,7 +8,7 @@ const titleTemplate = "%s | FAN Passport";
 export const getMetadata = ({
   title,
   description,
-  imageRelativePath = "/thumbnail.jpg",
+  imageRelativePath = "/social-preview.jpg",
 }: {
   title: string;
   description: string;

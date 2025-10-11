@@ -20,4 +20,4 @@ node_modules
 .idea
 
 # cli
-dist
+dist.env
