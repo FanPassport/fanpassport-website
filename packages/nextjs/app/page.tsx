@@ -41,7 +41,7 @@ const Home: NextPage = () => {
       <div className="flex flex-col grow w-full">
         {/* Full-width banner with overlay */}
         <div className="relative w-full h-64 md:h-80 lg:h-[340px] overflow-hidden">
-          <Image src="/logo-banner.jpg" alt="Fan Passport" fill className="object-cover w-full h-full" priority />
+          <Image src="/social-preview.jpg" alt="Fan Passport" fill className="object-cover w-full h-full" priority />
         </div>
         <div className="px-5 max-w-6xl w-full mx-auto mt-8">
           {loading ? (
