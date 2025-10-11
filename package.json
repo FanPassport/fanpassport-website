@@ -45,7 +45,7 @@
     "precommit": "lint-staged",
     "start": "yarn workspace @se-2/nextjs dev",
     "dev": "yarn workspace @se-2/nextjs dev",
-  "build": "yarn workspace @se-2/nextjs build",
+    "build": "yarn workspace @se-2/nextjs build",
     "test": "yarn foundry:test",
     "vercel": "yarn workspace @se-2/nextjs vercel",
     "vercel:login": "yarn workspace @se-2/nextjs vercel:login",
