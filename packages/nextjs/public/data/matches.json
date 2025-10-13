@@ -23,6 +23,16 @@
       "ticket": "https://billetterie.psg.fr/fr/catalogue/match-foot-masculin-paris-vs-strasbourg-2?utm_source=fanpassport.xyz&utm_medium=referral"
     },
     {
+      "id": "20251005-lille-paris",
+      "status": "finished",
+      "competition": "ligue1",
+      "kickoff": "2025-09-27T19:05:00Z",
+      "venue": "decathlon-arena-stade-pierre-mayroy",
+      "hometeam": "losc",
+      "awayteam": "psg",
+      "score": "1-1"
+    },
+    {
       "id": "20250927-paris-auxerre",
       "status": "finished",
       "competition": "ligue1",
