@@ -1,25 +1,47 @@
 {
   "matches": [
     {
-      "id": "20250927-paris-auxerre",
+      "id": "20251017-bayerleverkusen-paris",
       "status": "scheduled",
+      "competition": "champions-league",
+      "kickoff": "2025-10-17T18:45:00Z",
+      "venue": "bayarena",
+      "hometeam": "bayer-leverkusen",
+      "awayteam": "psg",
+      "score": null,
+      "ticket": "https://billetterie.psg.fr/fr/adversaires/paris-bayer-leverkusen?utm_source=fanpassport.xyz&utm_medium=referral"
+    },
+    {
+      "id": "20251017-paris-strasbourg",
+      "status": "scheduled",
+      "competition": "ligue1",
+      "kickoff": "2025-10-17T18:45:00Z",
+      "venue": "parc-des-princes",
+      "hometeam": "psg",
+      "awayteam": "auxerre",
+      "score": "null",
+      "ticket": "https://billetterie.psg.fr/fr/catalogue/match-foot-masculin-paris-vs-strasbourg-2?utm_source=fanpassport.xyz&utm_medium=referral"
+    },
+    {
+      "id": "20250927-paris-auxerre",
+      "status": "finished",
       "competition": "ligue1",
       "kickoff": "2025-09-27T19:05:00Z",
       "venue": "parc-des-princes",
       "hometeam": "psg",
       "awayteam": "auxerre",
-      "score": null,
+      "score": "2-0",
       "ticket": "https://billetterie.psg.fr/fr/catalogue/match-foot-masculin-paris-vs-auxerre-2?utm_source=fanpassport.xyz&utm_medium=referral"
     },
     {
       "id": "20250921-om-psg",
-      "status": "scheduled",
+      "status": "finished",
       "competition": "ligue1",
       "kickoff": "2025-09-21T18:45:00Z",
       "venue": "orange-velodrome",
       "hometeam": "om",
       "awayteam": "psg",
-      "score": null,
+      "score": "1-0",
       "ticket": "https://billetterie.om.fr/fr/catalogue/match-om-paris-sg?utm_source=fanpassport.xyz&utm_medium=referral"
     },
     {
