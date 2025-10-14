@@ -1679,6 +1679,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@keyv/serialize@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@keyv/serialize@npm:1.1.1"
+  checksum: 2963ba90a6ca1cad7e4c1ff2de09326841eba4bca90dc52508fdc92ef88972ffd8ae8be48de80cfa9a864617955f146bb6dca700f5790118fefd74880d432ca7
+  languageName: node
+  linkType: hard
+
 "@leichtgewicht/ip-codec@npm:^2.0.1":
   version: 2.0.5
   resolution: "@leichtgewicht/ip-codec@npm:2.0.5"
@@ -5333,18 +5340,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cacheable-request@npm:^12.0.1":
-  version: 12.0.1
-  resolution: "cacheable-request@npm:12.0.1"
+"cacheable-request@npm:^13.0.12":
+  version: 13.0.12
+  resolution: "cacheable-request@npm:13.0.12"
   dependencies:
     "@types/http-cache-semantics": ^4.0.4
     get-stream: ^9.0.1
-    http-cache-semantics: ^4.1.1
-    keyv: ^4.5.4
+    http-cache-semantics: ^4.2.0
+    keyv: ^5.5.3
     mimic-response: ^4.0.0
-    normalize-url: ^8.0.1
+    normalize-url: ^8.1.0
     responselike: ^3.0.0
-  checksum: 893172f768c329522b3d4b10ae2270f6252249c4440eb3a6bc7b8a9851317e346dc3d6cfe0e268edb502b0b6ff13727a5255a17707f67b3542762906e472f612
+  checksum: b2343f784938d6890eae1366785837bb6c0dca6d0473ecb429b4f59d4c556176d7be422da961500fb725b6dde74e3aaa6ba2d932af6bf54a67ad2bf51add8533
   languageName: node
   linkType: hard
 
@@ -7847,21 +7854,22 @@ __metadata:
   linkType: hard
 
 "got@npm:^14.4.5":
-  version: 14.4.9
-  resolution: "got@npm:14.4.9"
+  version: 14.5.0
+  resolution: "got@npm:14.5.0"
   dependencies:
     "@sindresorhus/is": ^7.0.1
     "@szmarczak/http-timer": ^5.0.1
     cacheable-lookup: ^7.0.0
-    cacheable-request: ^12.0.1
+    cacheable-request: ^13.0.12
     decompress-response: ^6.0.0
     form-data-encoder: ^4.0.2
     http2-wrapper: ^2.2.1
+    keyv: ^5.5.3
     lowercase-keys: ^3.0.0
     p-cancelable: ^4.0.1
-    responselike: ^3.0.0
+    responselike: ^4.0.2
     type-fest: ^4.26.1
-  checksum: 0fa1e40468ad1122a2a1631f5153e0c041c5c343cf2f859bbd49ccba76cf298711dea763ecd96a5e4716e08c82e9172040fd6703c34c062eaa372edf4fb1766f
+  checksum: 2d6ebb6c2985a043b976526e53f903df54e488bccae7b48ad67b7f2724e84fd3ca4fd76fd418c7719b5330e52f3e04f6a9ca09d51b33528f489b102ea6b85def
   languageName: node
   linkType: hard
 
@@ -8016,7 +8024,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"http-cache-semantics@npm:^4.1.1":
+"http-cache-semantics@npm:^4.1.1, http-cache-semantics@npm:^4.2.0":
   version: 4.2.0
   resolution: "http-cache-semantics@npm:4.2.0"
   checksum: 7a7246ddfce629f96832791176fd643589d954e6f3b49548dadb4290451961237fab8fcea41cd2008fe819d95b41c1e8b97f47d088afc0a1c81705287b4ddbcc
@@ -9153,6 +9161,15 @@ __metadata:
   dependencies:
     json-buffer: 3.0.1
   checksum: 74a24395b1c34bd44ad5cb2b49140d087553e170625240b86755a6604cd65aa16efdbdeae5cdb17ba1284a0fbb25ad06263755dbc71b8d8b06f74232ce3cdd72
+  languageName: node
+  linkType: hard
+
+"keyv@npm:^5.5.3":
+  version: 5.5.3
+  resolution: "keyv@npm:5.5.3"
+  dependencies:
+    "@keyv/serialize": ^1.1.1
+  checksum: b4b673c50a42208a1837b2ccaa109c8dd55e012685a0fadcef8d2b9be8ccdc644e2415b8c793bfe801aaa56b59e1f1d836539c88cf1c505c806a9e2d4e8df540
   languageName: node
   linkType: hard
 
@@ -10397,7 +10414,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"normalize-url@npm:^8.0.1":
+"normalize-url@npm:^8.1.0":
   version: 8.1.0
   resolution: "normalize-url@npm:8.1.0"
   checksum: 3800983919a973ab127c59c63706dee60b4b46649fdfb277aa571951795fecffab43e05893f621764adb15a0ed85d3fb880fdeb179e605d1afffc8d7f48d21d2
@@ -11968,6 +11985,15 @@ __metadata:
   dependencies:
     lowercase-keys: ^3.0.0
   checksum: e0cc9be30df4f415d6d83cdede3c5c887cd4a73e7cc1708bcaab1d50a28d15acb68460ac5b02bcc55a42f3d493729c8856427dcf6e57e6e128ad05cba4cfb95e
+  languageName: node
+  linkType: hard
+
+"responselike@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "responselike@npm:4.0.2"
+  dependencies:
+    lowercase-keys: ^3.0.0
+  checksum: 9aabf40177da2c6f57ff24e5c8beae01ee38dd4e74e75795d8ae3578bd840b89cae961417cf120d2056f43e02358182016296ad3dfa5b123fc77925344e2c5df
   languageName: node
   linkType: hard
 
