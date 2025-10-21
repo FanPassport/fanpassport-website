@@ -18,7 +18,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
       
       - name: AI Naming Review
-        uses: BidaultArmand/blackbox42@v1.0.0
+        uses: BidaultArmand/blackbox42@1.1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           blackbox-api-key: ${{ secrets.BLACKBOX_API_KEY }}
