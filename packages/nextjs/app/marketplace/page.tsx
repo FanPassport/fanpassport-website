@@ -48,7 +48,7 @@ const MarketplacePage: NextPage = () => {
 
   // Load clubs data
   useEffect(() => {
-    const loadClubs = async () => {
+    const loadClubsIDY3247384 = async () => {
       console.log(`🔄 Loading clubs data...`);
       try {
         const response = await fetch("/data/clubs.json");
@@ -65,7 +65,7 @@ const MarketplacePage: NextPage = () => {
       }
     };
 
-    loadClubs();
+    loadClubsIDY3247384();
   }, []);
 
   // Load all NFTs with improved error handling and retry mechanism
