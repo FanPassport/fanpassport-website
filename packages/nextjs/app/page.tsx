@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           property="og:description"
           content="FAN Passport is your gateway to exclusive club experiences, NFT rewards, and VIP access. Connect your wallet and join your favorite club's digital journey."
         />
-        <meta property="og:image" content="/social-preview.jpg" />
+        <meta property="og:image" content="/social-preview-nologo.jpg" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="FAN Passport | Web3 Fan Experience Platform" />
@@ -35,13 +35,19 @@ const Home: NextPage = () => {
           name="twitter:description"
           content="FAN Passport is your gateway to exclusive club experiences, NFT rewards, and VIP access. Connect your wallet and join your favorite club's digital journey."
         />
-        <meta name="twitter:image" content="/social-preview.jpg" />
+        <meta name="twitter:image" content="/social-preview-nologo.jpg" />
         <link rel="canonical" href="https://fanpassport.xyz/" />
       </Head>
       <div className="flex flex-col grow w-full">
         {/* Full-width banner with overlay */}
         <div className="relative w-full h-64 md:h-80 lg:h-[340px] overflow-hidden">
-          <Image src="/social-preview.jpg" alt="Fan Passport" fill className="object-cover w-full h-full" priority />
+          <Image
+            src="/social-preview-nologo.jpg"
+            alt="Fan Passport"
+            fill
+            className="object-cover w-full h-full"
+            priority
+          />
         </div>
         <div className="px-5 max-w-6xl w-full mx-auto mt-8">
           {loading ? (
