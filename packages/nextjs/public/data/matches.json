@@ -1,25 +1,36 @@
 {
   "matches": [
     {
-      "id": "20251017-bayerleverkusen-paris",
+      "id": "20251017-brest-paris",
       "status": "scheduled",
+      "competition": "ligue1",
+      "kickoff": "2025-10-25T15:00:00Z",
+      "venue": "parc-des-princes",
+      "hometeam": "psg",
+      "awayteam": "auxerre",
+      "score": "null",
+      "ticket": "https://billetterie.sb29.bzh/content?lang=fr&utm_source=fanpassport.xyz&utm_medium=referral"
+    },
+    {
+      "id": "20251017-bayerleverkusen-paris",
+      "status": "finished",
       "competition": "champions-league",
       "kickoff": "2025-10-17T18:45:00Z",
       "venue": "bayarena",
       "hometeam": "bayer-leverkusen",
       "awayteam": "psg",
-      "score": null,
+      "score": "2-7",
       "ticket": "https://billetterie.psg.fr/fr/adversaires/paris-bayer-leverkusen?utm_source=fanpassport.xyz&utm_medium=referral"
     },
     {
       "id": "20251017-paris-strasbourg",
-      "status": "scheduled",
+      "status": "finished",
       "competition": "ligue1",
       "kickoff": "2025-10-17T18:45:00Z",
       "venue": "parc-des-princes",
       "hometeam": "psg",
-      "awayteam": "auxerre",
-      "score": "null",
+      "awayteam": "strasbourg",
+      "score": "3-3",
       "ticket": "https://billetterie.psg.fr/fr/catalogue/match-foot-masculin-paris-vs-strasbourg-2?utm_source=fanpassport.xyz&utm_medium=referral"
     },
     {
