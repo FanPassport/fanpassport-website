@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 
 const RPC_URL = "http://127.0.0.1:8545";
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "***REMOVED***";
+const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6";
 const EXPERIENCE_NFT_ADDRESS = "0xa15bb66138824a1c7167f5e85b957d04dd34e468";
 
 const EXPERIENCE_NFT_ABI = [

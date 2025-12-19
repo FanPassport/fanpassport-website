@@ -2,17 +2,14 @@
 
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config();
 
 // Clés privées connues à détecter (exemples pour détection)
-const PRIVATE_KEYS = [
-  '***REMOVED***',
-  '***REMOVED***'
-];
+// Charger depuis .env pour éviter les hardcoded secrets
+const PRIVATE_KEYS = process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [];
 
 // API Keys connues à détecter (exemples pour détection)
-const API_KEYS = [
-  'oKxs-03sij-U_N0iOlrSsZFr29-IqbuF'
-];
+const API_KEYS = [];
 
 // Patterns à détecter
 const PATTERNS = [
